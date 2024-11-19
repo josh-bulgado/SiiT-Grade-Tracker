@@ -1,0 +1,39 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+/* Basic button styling */
+.button {
+    -fx-background-color: transparent;
+    -fx-transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+    -fx-background-color: white;
+    -fx-fill: #074072; 
+    -fx-cursor: hand;
+}
+
+
+.button:hover .svg,
+.button:active .svg {
+    -fx-fill: #074072;  
+}
+
+.button.active,
+.button.active .svg {
+    -fx-background-color: white;
+    -fx-fill: #074072;  
+}
+
+.svg {
+    -fx-fill: white;
+}
+
+.overview {
+    -fx-background-color: linear-gradient(to top left, white 0%, #A0C4D9 30%, #074072 100%);
+}
+

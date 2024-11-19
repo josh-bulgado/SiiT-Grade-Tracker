@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../../../styles/initial_page.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sgpt.mavenproject1.InitialPageController">
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane>
+               <children>
+                  <ImageView fitHeight="832.0" fitWidth="1280.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/Group%2037117-4.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" spacing="30.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+               <children>
+                  <Button fx:id="studentLoginButton" mnemonicParsing="false" onAction="#onStudentLogin" prefHeight="87.0" prefWidth="366.0" stylesheets="@../../../styles/initial_page.css" text="STUDENT" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Bold" size="44.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onFacultyLogin" prefHeight="87.0" prefWidth="366.0" text="FACULTY" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Bold" size="44.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
