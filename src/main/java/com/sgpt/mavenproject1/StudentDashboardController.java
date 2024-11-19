@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import javafx.fxml.*;
 import javafx.scene.text.Text;
 import com.sgpt.mavenproject1.main.DatabaseConnection;
@@ -114,9 +111,11 @@ public class StudentDashboardController implements Initializable {
                 + "JOIN students.student_information si ON se.student_id = si.id "
                 + "JOIN sgpt.courses c ON sc.course_id = c.id "
                 + "WHERE si.student_id = ? ";
+                // + "AND CONCAT (sy.school_year_name, ' ' , t.term_name) AS semester = ?";
 
         stmt = conn.prepareStatement(query);
         stmt.setString(1, studentId);
+        // stmt.setString(2, semester);
         rs = stmt.executeQuery();
 
         // ArrayList<Double> courseTermGrades = new ArrayList<>();
@@ -146,7 +145,8 @@ public class StudentDashboardController implements Initializable {
                 + "JOIN students.student_information si ON se.student_id = si.id "
                 + "JOIN sgpt.school_year sy ON se.year_id = sy.id "
                 + "JOIN sgpt.terms t ON se.term_id = t.id "
-                + "WHERE si.student_id = ?";
+                + "WHERE si.student_id = ? "
+                + "ORDER BY sy.school_year_name ASC, t.term_name ASC";
 
         stmt = conn.prepareStatement(query);
         stmt.setString(1, studentId);
@@ -156,10 +156,12 @@ public class StudentDashboardController implements Initializable {
 
         while (rs.next()) {
             String semester = rs.getString("semester");
+            System.out.println(semester);
             semesters.add(semester);
         }
 
         Collections.reverse(semesters);
+        System.out.println(semesters);
 
         for (String semester : semesters) {
             schoolYearTerm.getItems().addAll(semester);

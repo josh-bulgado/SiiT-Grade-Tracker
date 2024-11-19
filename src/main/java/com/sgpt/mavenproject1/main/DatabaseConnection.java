@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DatabaseConnection {
 
-    private static final String URL = "jdbc:mysql://10.23.202.52:3306/student_grades_performance_tracker";
+    private static final String URL = "jdbc:mysql://10.0.0.41:3306/student_grades_performance_tracker";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 

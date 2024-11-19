@@ -58,7 +58,7 @@
                               </StackPane>
                               <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="29.5" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="prelims_grade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+                                    <Text fx:id="prelims_grade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
