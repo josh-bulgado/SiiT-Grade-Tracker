@@ -1,0 +1,41 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+}
+
+.button:hover {
+	-fx-cursor: hand;
+}
+
+.button {
+	-fx-background-color: white;
+	-fx-text-fill: #074072;
+}
+
+.choice-box .arrow {
+	-fx-background-color: #074072;
+}
+
+.choice-box {
+	-fx-background-color: white;
+	-fx-background-radius: 6px;
+}
+
+.choice-box:hover {
+	-fx-cursor: hand;
+}
+
+.choice-box .choice-box-popup .list-vew .list-cell {
+	-fx-background-color: white;
+	-fx-text-fill: #074072;
+}
+
+.scroll-pane .vbar {
+	-fx-background-color: #074072;
+}
+
+.radius {
+	-fx-background-radius: 6;
+}
