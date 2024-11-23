@@ -215,6 +215,6 @@ public class StudentDashboardController implements Initializable {
 
     @FXML
     private void logoutStudent() throws IOException {
-        App.setRoot("initial_page");
+        App.setRoot("login");
     }
 }

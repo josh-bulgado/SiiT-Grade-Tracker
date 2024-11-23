@@ -20,7 +20,7 @@ public class FacultyDashboardCentralController implements Initializable {
 
     @FXML
     private void backBtn() throws IOException {
-        App.setRoot("initial_page");
+        App.setRoot("login");
     }
 
     @FXML

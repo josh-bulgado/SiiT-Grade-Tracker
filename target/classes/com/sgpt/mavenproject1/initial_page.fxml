@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../../../styles/initial_page.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sgpt.mavenproject1.InitialPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../../../styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sgpt.mavenproject1.InitialPageController">
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +23,7 @@
             </StackPane>
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" spacing="30.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
                <children>
-                  <Button fx:id="studentLoginButton" mnemonicParsing="false" onAction="#onStudentLogin" prefHeight="87.0" prefWidth="366.0" stylesheets="@../../../styles/initial_page.css" text="STUDENT" textFill="WHITE">
+                  <Button fx:id="studentLoginButton" mnemonicParsing="false" onAction="#onStudentLogin" prefHeight="87.0" prefWidth="366.0" stylesheets="@../../../styles/login.css" text="STUDENT" textFill="WHITE">
                      <font>
                         <Font name="Helvetica Neue Bold" size="44.0" />
                      </font>
