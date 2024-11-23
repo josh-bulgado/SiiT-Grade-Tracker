@@ -9,7 +9,7 @@ import java.util.*;
 import javafx.fxml.*;
 import javafx.scene.text.Text;
 
-import com.sgpt.mavenproject1.main.App;
+import com.sgpt.mavenproject1.App;
 import com.sgpt.mavenproject1.main.DatabaseConnection;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.*;

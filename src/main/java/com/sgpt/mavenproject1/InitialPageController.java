@@ -3,8 +3,6 @@ package com.sgpt.mavenproject1;
 import javafx.fxml.FXML;
 import java.io.IOException;
 
-import com.sgpt.mavenproject1.main.App;
-
 public class InitialPageController {
 
     @FXML
