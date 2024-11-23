@@ -1,5 +1,6 @@
-com/sgpt/mavenproject1/FacultyLoginController.class
+com/sgpt/mavenproject1/students/StudentDashboardController.class
 com/sgpt/mavenproject1/StudentCCController.class
+com/sgpt/mavenproject1/LoginController.class
 com/sgpt/mavenproject1/App$SplashScreen.class
 com/sgpt/mavenproject1/App$SplashScreen$SplashScreenApp$1.class
 com/sgpt/mavenproject1/students/StudentInformation.class
@@ -7,9 +8,7 @@ module-info.class
 com/sgpt/mavenproject1/InitialPageController.class
 com/sgpt/mavenproject1/App$SplashScreen$SplashScreenApp.class
 com/sgpt/mavenproject1/FacultyDashboardCentralController.class
-com/sgpt/mavenproject1/StudentDashboardController.class
 com/sgpt/mavenproject1/FacultySLController.class
-com/sgpt/mavenproject1/StudentLoginController.class
 com/sgpt/mavenproject1/FacultyArchiveController.class
 com/sgpt/mavenproject1/App.class
 com/sgpt/mavenproject1/FacultyDashboardController.class

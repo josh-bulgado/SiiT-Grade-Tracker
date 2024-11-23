@@ -1,16 +1,17 @@
 package com.sgpt.mavenproject1;
 
-import com.sgpt.mavenproject1.main.CheckCredentials;
+import com.sgpt.mavenproject1.main.*;
+import com.sgpt.mavenproject1.students.*;
+
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.SVGPath;
+import javafx.scene.input.*;
 
 public class LoginController implements Initializable {
 
@@ -43,7 +44,8 @@ public class LoginController implements Initializable {
         try {
             String role = cc.checkCredentials(emailAddress, password);
             if (role.equals("student")) {
-                StudentDashboardController.setStudentId(2000 + emailAddress.replaceAll("\\D", ""));
+
+                StudentDashboardController.setStudentId(fetchInformation(emailAddress));
                 App.setRoot("student_dashboard");
             }
 
@@ -89,6 +91,46 @@ public class LoginController implements Initializable {
         if (event.getCode() == KeyCode.ENTER) {
             login();
         }
+    }
+
+    private String fetchInformation(String emailAddress) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DatabaseConnection.getConnection();
+
+            String query = "SELECT si.student_id "
+                    + "FROM auth.student_login al "
+                    + "JOIN students.student_information si ON al.student_id = si.id "
+                    + "WHERE al.email_address = ?";
+
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, emailAddress);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("student_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
 }

@@ -5,10 +5,9 @@
 /Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/FacultyDashboardController.java
 /Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/FacultyDashboardCentralController.java
 /Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/module-info.java
-/Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/StudentLoginController.java
+/Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/students/StudentDashboardController.java
 /Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/FacultyArchiveController.java
-/Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/StudentDashboardController.java
 /Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/main/CheckCredentials.java
 /Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/InitialPageController.java
-/Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/FacultyLoginController.java
+/Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/LoginController.java
 /Users/joshuabulgado/Offline Document/mavenproject1/src/main/java/com/sgpt/mavenproject1/App.java

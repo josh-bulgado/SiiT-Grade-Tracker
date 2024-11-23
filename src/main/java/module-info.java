@@ -7,6 +7,7 @@ module com.sgpt.mavenproject1 {
 
     opens com.sgpt.mavenproject1 to javafx.fxml;
     opens com.sgpt.mavenproject1.main to javafx.fxml;
+    opens com.sgpt.mavenproject1.students to javafx.fxml;
 
     exports com.sgpt.mavenproject1;
     exports com.sgpt.mavenproject1.main;

@@ -1,5 +1,5 @@
 
-package com.sgpt.mavenproject1;
+package com.sgpt.mavenproject1.students;
 
 import java.net.URL;
 import java.util.ResourceBundle;

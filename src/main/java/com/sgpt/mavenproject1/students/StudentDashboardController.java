@@ -1,5 +1,5 @@
 
-package com.sgpt.mavenproject1;
+package com.sgpt.mavenproject1.students;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javafx.fxml.*;
 import javafx.scene.text.Text;
+
+import com.sgpt.mavenproject1.App;
 import com.sgpt.mavenproject1.main.DatabaseConnection;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.*;
@@ -187,7 +189,6 @@ public class StudentDashboardController implements Initializable {
 
         while (rs.next()) {
             String semester = rs.getString("semester");
-            System.out.println(semester);
             semesters.add(semester);
         }
 

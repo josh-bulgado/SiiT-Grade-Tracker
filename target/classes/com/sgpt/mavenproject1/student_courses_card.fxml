@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="coursePane" maxHeight="220.0" minHeight="-Infinity" prefHeight="220.0" style="-fx-background-radius: 20px; -fx-background-color: white;" stylesheets="@../../../styles/student_courses_card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sgpt.mavenproject1.StudentCCController">
+<StackPane fx:id="coursePane" maxHeight="220.0" minHeight="-Infinity" prefHeight="220.0" style="-fx-background-radius: 20px; -fx-background-color: white;" stylesheets="@../../../styles/student_courses_card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sgpt.mavenproject1.students.StudentCCController">
    <children>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="180.0" prefWidth="563.0" style="-fx-background-radius: 20px;">
          <top>
