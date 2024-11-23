@@ -1,4 +1,4 @@
-package com.sgpt.mavenproject1;
+package com.sgpt.mavenproject1.main;
 
 import javafx.application.Application;
 import javafx.application.Platform;

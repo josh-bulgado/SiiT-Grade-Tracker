@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.sgpt.mavenproject1.App;
+import com.sgpt.mavenproject1.main.App;
 
 import javafx.fxml.*;
 
