@@ -1,5 +1,6 @@
 package com.sgpt.mavenproject1;
 
+import com.sgpt.mavenproject1.faculty.FacultyDashboardCentralController;
 import com.sgpt.mavenproject1.main.*;
 import com.sgpt.mavenproject1.students.*;
 

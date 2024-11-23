@@ -1,18 +1,20 @@
 
-package com.sgpt.mavenproject1;
+package com.sgpt.mavenproject1.faculty;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
 
-public class FacultyArchiveController extends FacultyDashboardCentralController {
+public class FacultyDashboardController extends FacultyDashboardCentralController {
 
     @FXML
-    private Button archiveBtn;
+    private Button homeBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        archiveBtn.getStyleClass().add("active");
+        homeBtn.getStyleClass().add("active");
     }
+
+    
 }

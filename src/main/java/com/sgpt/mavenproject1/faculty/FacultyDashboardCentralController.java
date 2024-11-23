@@ -1,8 +1,11 @@
-package com.sgpt.mavenproject1;
+package com.sgpt.mavenproject1.faculty;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.sgpt.mavenproject1.App;
+
 import javafx.fxml.*;
 
 public class FacultyDashboardCentralController implements Initializable {

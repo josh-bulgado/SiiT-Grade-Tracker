@@ -1,5 +1,5 @@
 
-package com.sgpt.mavenproject1;
+package com.sgpt.mavenproject1.faculty;
 
 import java.net.URL;
 import java.sql.*;
