@@ -4,7 +4,6 @@ import com.sgpt.mavenproject1.main.CheckCredentials;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -12,44 +11,40 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class StudentLoginController implements Initializable {
+public class LoginController implements Initializable {
 
     @FXML
-    private TextField studentIdField;
+    private TextField emailAddressField;
 
     @FXML
     private PasswordField passwordField;
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        studentIdField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                passwordField.requestFocus();
-            }
-        });
-
         passwordField.setOnKeyPressed(this::handleKeyPressed);
     }
 
     @FXML
-    private void onStudentLogin() {
+    private void login() {
         CheckCredentials cc = new CheckCredentials();
-        String studentId = studentIdField.getText();
+        String emailAddress = emailAddressField.getText();
         String password = passwordField.getText();
 
         try {
-            if (cc.checkCredentials(studentId, password, false)) {
-
-                StudentDashboardController.setStudentId(studentId);
+            String role = cc.checkCredentials(emailAddress, password);
+            if (role.equals("student")) {
+                StudentDashboardController.setStudentId(2000 + emailAddress.replaceAll("\\D", ""));
                 App.setRoot("student_dashboard");
+            }
 
+            if (role.equals("faculty")) {
+                FacultyDashboardCentralController.setDepartment(role);
+                App.setRoot("faculty_dashboard");
             }
         } catch (IOException ioe) {
-
             // If credentials are invalid, show an error message
-            showErrorDialog("Invalid student ID or password");
+            showErrorDialog("Invalid email address or password");
         }
-        // Validate credentials
 
     }
 
@@ -68,7 +63,7 @@ public class StudentLoginController implements Initializable {
 
     private void handleKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            onStudentLogin();
+            login();
         }
     }
 

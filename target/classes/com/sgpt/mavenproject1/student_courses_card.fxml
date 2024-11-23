@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +18,7 @@
          <top>
             <StackPane alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #074072; -fx-background-radius: 20px 20px 0 0;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="courseName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Description">
+                  <Text fx:id="courseName" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Description" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
                         <Insets left="15.0" />
                      </StackPane.margin>
@@ -31,20 +32,14 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane hgap="20.0" styleClass="radius">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" top="30.0" />
+                     </VBox.margin>
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 20px;" styleClass="radius" stylesheets="@../../../styles/student_courses_card.css">
+                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 20px;" styleClass="radius" stylesheets="@../../../styles/student_courses_card.css" HBox.hgrow="ALWAYS">
                            <children>
-                              <StackPane prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #074072;" styleClass="upper-radius">
+                              <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PRELIMS">
                                        <font>
@@ -58,7 +53,7 @@
                               </StackPane>
                               <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="29.5" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="prelims_grade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="prelims_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -67,9 +62,9 @@
                               </StackPane>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" GridPane.columnIndex="1">
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
                            <children>
-                              <StackPane prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #074072;" styleClass="upper-radius">
+                              <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MIDTERM">
                                        <font>
@@ -83,7 +78,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="midterm_grade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+                                    <Text fx:id="midterm_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -92,9 +87,9 @@
                               </StackPane>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" GridPane.columnIndex="2">
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
                            <children>
-                              <StackPane prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #074072;" styleClass="upper-radius">
+                              <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PRE-FINALS">
                                        <font>
@@ -108,7 +103,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="prefinal_grade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+                                    <Text id="grades" fx:id="prefinal_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -117,9 +112,9 @@
                               </StackPane>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" GridPane.columnIndex="3">
+                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
                            <children>
-                              <StackPane prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #074072;" styleClass="upper-radius">
+                              <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FINALS">
                                        <font>
@@ -133,7 +128,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="final_grade" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+                                    <Text fx:id="final_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -143,18 +138,15 @@
                            </children>
                         </VBox>
                      </children>
-                     <VBox.margin>
-                        <Insets left="15.0" right="15.0" top="30.0" />
-                     </VBox.margin>
-                  </GridPane>
+                  </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets top="15.0" />
+                  <Insets />
                </BorderPane.margin>
             </VBox>
          </center>
          <bottom>
-            <GridPane alignment="CENTER_LEFT" BorderPane.alignment="CENTER_RIGHT">
+            <GridPane fx:id="courseGradePane" alignment="CENTER_LEFT" BorderPane.alignment="CENTER_RIGHT">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

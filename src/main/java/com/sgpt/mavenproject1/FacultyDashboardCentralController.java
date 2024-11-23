@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.sgpt.mavenproject1;
 
 import java.io.IOException;
@@ -11,8 +7,15 @@ import javafx.fxml.*;
 
 public class FacultyDashboardCentralController implements Initializable {
 
+    private static String department;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+    }
+
+    public static void setDepartment(String department) {
+        FacultyDashboardCentralController.department = department;
     }
 
     @FXML

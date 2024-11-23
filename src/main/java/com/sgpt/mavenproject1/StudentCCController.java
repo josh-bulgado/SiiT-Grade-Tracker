@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.*;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class StudentCCController implements Initializable {
@@ -22,17 +24,23 @@ public class StudentCCController implements Initializable {
     private Text courseGradeTxt;
 
     @FXML
-    ChoiceBox<String> schoolYearTerm;
+    private ChoiceBox<String> schoolYearTerm;
+
+    @FXML
+    private GridPane courseGradePane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         courseName.setText(courseDescription);
-        prelims_grade.setText(formatDouble(prelimGrade));
-        midterm_grade.setText(formatDouble(midtermGrade));
-        prefinal_grade.setText(formatDouble(prefinalGrade));
-        final_grade.setText(formatDouble(finalGrade));
-        courseName.setText(courseDescription);
-        computeCourseGrade();
+        prelims_grade.setText(prelimGrade != 0.0 ? formatDouble(prelimGrade) : "");
+        midterm_grade.setText(midtermGrade != 0.0 ? formatDouble(midtermGrade) : "");
+        prefinal_grade.setText(prefinalGrade != 0.0 ? formatDouble(prefinalGrade) : "");
+        final_grade.setText(finalGrade != 0.0 ? formatDouble(finalGrade) : "");
+        if (prelimGrade == 0.0 || midtermGrade == 0.0 || prefinalGrade == 0.0 | finalGrade == 0.0) {
+            courseGradePane.setVisible(false);
+        } else {
+            computeCourseGrade();
+        }
     }
 
     public static void setCourseInformation(String courseDescription, Double prelimGrade,
@@ -44,19 +52,16 @@ public class StudentCCController implements Initializable {
         StudentCCController.finalGrade = finalGrade;
     }
 
-    public static void setCourseInformation(String courseDescription) {
-        StudentCCController.courseDescription = courseDescription;
-    }
-
     private void computeCourseGrade() {
         // Partial Scores
+
         Double prelimsPS = prelimGrade * 0.2;
         Double midtermPS = midtermGrade * .2;
         Double prefinalPS = prefinalGrade * .2;
         Double finalPS = finalGrade * .4;
         Double courseScore = prelimsPS + midtermPS + prefinalPS + finalPS;
         double courseGrade = getCourseGrade(courseScore);
-        
+
         courseGradeTxt.setText(String.format("%.2f", courseGrade));
     }
 

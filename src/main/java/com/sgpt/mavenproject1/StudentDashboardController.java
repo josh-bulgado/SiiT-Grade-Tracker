@@ -39,6 +39,12 @@ public class StudentDashboardController implements Initializable {
             studentIdTxt.setText(studentId);
         }
         fetchInformation();
+
+        schoolYearTerm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                updateCourses(newValue);
+            }
+        });
     }
 
     private void fetchInformation() {
@@ -49,8 +55,10 @@ public class StudentDashboardController implements Initializable {
         try {
             fetchStudentInformation(conn, stmt, rs);
             fetchStudentSemesters(conn, stmt, rs);
-            // fetchRecentSemester();
-            fetchStudentCourse(conn, stmt, rs);
+            String currentSemester = schoolYearTerm.getValue();
+            if (currentSemester != null) {
+                fetchStudentCourse(conn, stmt, rs, currentSemester); // Fetch courses for the current semester
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             studentNameTxt.setText("Error fetching student information");
@@ -102,7 +110,8 @@ public class StudentDashboardController implements Initializable {
         }
     }
 
-    private void fetchStudentCourse(Connection conn, PreparedStatement stmt, ResultSet rs) throws SQLException {
+    private void fetchStudentCourse(Connection conn, PreparedStatement stmt, ResultSet rs, String semester)
+            throws SQLException {
         conn = DatabaseConnection.getConnection();
         String query = "SELECT sg.prelims_grade, sg.midterm_grade, sg.prefinals_grade, sg.finals_grade, c.course_description "
                 + "FROM students.student_grades sg "
@@ -110,15 +119,18 @@ public class StudentDashboardController implements Initializable {
                 + "JOIN students.student_enrollment se ON sc.student_enrollment_id = se.id "
                 + "JOIN students.student_information si ON se.student_id = si.id "
                 + "JOIN sgpt.courses c ON sc.course_id = c.id "
-                + "WHERE si.student_id = ? ";
-                // + "AND CONCAT (sy.school_year_name, ' ' , t.term_name) AS semester = ?";
+                + "JOIN sgpt.school_year sy ON se.year_id = sy.id "
+                + "JOIN sgpt.terms t ON se.term_id = t.id "
+                + "WHERE si.student_id = ? "
+                + "AND CONCAT (sy.school_year_name, ' ' , t.term_name) = ?";
 
         stmt = conn.prepareStatement(query);
         stmt.setString(1, studentId);
-        // stmt.setString(2, semester);
+        stmt.setString(2, semester);
         rs = stmt.executeQuery();
 
-        // ArrayList<Double> courseTermGrades = new ArrayList<>();
+        coursesPane.getChildren().clear();
+
         while (rs.next()) {
             String courseDescription = rs.getString("course_description");
 
@@ -134,9 +146,28 @@ public class StudentDashboardController implements Initializable {
         }
     }
 
-    // private void setCourseTermGrades(Double grade) {
-    // courseTermGrades.add(grade);
-    // }
+    private void updateCourses(String semester) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            fetchStudentCourse(conn, stmt, rs, semester);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null)
+                    rs.close();
+                if (stmt != null)
+                    stmt.close();
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     private void fetchStudentSemesters(Connection conn, PreparedStatement stmt, ResultSet rs) throws SQLException {
         conn = DatabaseConnection.getConnection();

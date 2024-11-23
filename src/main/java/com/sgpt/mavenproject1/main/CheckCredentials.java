@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class CheckCredentials {
 
-    public boolean checkCredentials(String id, String password, boolean admin) {
+    public String checkCredentials(String email_address, String password) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -13,19 +13,22 @@ public class CheckCredentials {
         try {
             conn = DatabaseConnection.getConnection();
 
-            String sql = "SELECT * FROM auth.student_login WHERE student_id = ? AND password = ?";
-            if (admin) {
-                sql = "SELECT * FROM auth.admin_login WHERE username = ? AND password = ?";
+            String sql = "SELECT * FROM auth.admin_login WHERE email_address = ? AND password = ?";
+            String role = "faculty";
+
+            if (email_address.matches(".*\\d{6}.*")) {
+                sql = "SELECT * FROM auth.student_login WHERE email_address = ? AND password = ?";
+                role = "student";
             }
 
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, id);
+            stmt.setString(1, email_address);
             stmt.setString(2, password);
 
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return true;
+                return role;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,7 +48,7 @@ public class CheckCredentials {
                 e.printStackTrace();
             }
         }
-        return false;
+        return "invalid";
     }
 
 }

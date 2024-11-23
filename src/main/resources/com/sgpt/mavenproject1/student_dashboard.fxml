@@ -55,7 +55,7 @@
             <Insets left="50.0" right="50.0" />
          </padding>
          <content>
-            <VBox prefWidth="100.0">
+            <VBox prefWidth="100.0" spacing="30.0">
                <children>
                   <StackPane alignment="BOTTOM_RIGHT" prefHeight="380.0" prefWidth="200.0">
                      <children>
@@ -160,6 +160,9 @@
                      <effect>
                         <DropShadow offsetY="1.0" />
                      </effect>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
                   </StackPane>
                   <GridPane prefHeight="60.0" style="-fx-background-color: #074072; -fx-background-radius: 10px;">
                     <columnConstraints>
@@ -170,7 +173,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets />
                      </VBox.margin>
                      <children>
                         <HBox alignment="CENTER_LEFT" layoutX="583.0" layoutY="10.0">
@@ -213,7 +216,7 @@
                   </GridPane>
                   <TilePane fx:id="coursesPane" alignment="CENTER_LEFT" focusTraversable="true" hgap="19.5" prefColumns="2" prefRows="4" prefTileHeight="220.0" prefTileWidth="563.0" vgap="20.0">
                      <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </TilePane>
                   <BorderPane maxHeight="1.7976931348623157E308" prefHeight="250.0" prefWidth="1145.5" style="-fx-background-color: white; -fx-background-radius: 20px;">
@@ -508,7 +511,7 @@
                         <DropShadow />
                      </effect>
                      <VBox.margin>
-                        <Insets bottom="50.0" />
+                        <Insets bottom="50.0" top="30.0" />
                      </VBox.margin>
                   </BorderPane>
                </children>

@@ -60,167 +60,6 @@
          <BorderPane.margin>
             <Insets bottom="30.0" left="10.0" right="30.0" top="30.0" />
          </BorderPane.margin>
-         <center>
-            <GridPane hgap="100.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="20.0">
-                           <children>
-                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="125.0" styleClass="course-header">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Course Code">
-                                       <font>
-                                          <Font name="Helvetica Neue" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" styleClass="course-header" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Course Description">
-                                       <font>
-                                          <Font name="Helvetica Neue" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" styleClass="course-header">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Units">
-                                       <font>
-                                          <Font name="Helvetica Neue" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </HBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <HBox alignment="CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
-                                 <children>
-                                    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="125.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="courses-details" text="00000">
-                                             <font>
-                                                <Font name="Helvetica Neue" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                    </StackPane>
-                                    <StackPane alignment="CENTER_LEFT" maxHeight="100.0" minHeight="25.0" minWidth="-Infinity" prefWidth="260.0" snapToPixel="false" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Course 1" textAlignment="JUSTIFY" wrappingWidth="260.0">
-                                             <font>
-                                                <Font name="Helvetica Neue Light" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="2.5" top="2.5" />
-                                       </padding>
-                                    </StackPane>
-                                    <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="75.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="0">
-                                             <font>
-                                                <Font name="Helvetica Neue" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </VBox>
-                  <VBox GridPane.columnIndex="1">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="20.0">
-                           <children>
-                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="113.5" styleClass="course-header" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Prelims">
-                                       <font>
-                                          <Font name="Helvetica Neue" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="113.5" styleClass="course-header" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Midterm">
-                                       <font>
-                                          <Font name="Helvetica Neue" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="114.0" styleClass="course-header" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Pre-Finals">
-                                       <font>
-                                          <Font name="Helvetica Neue" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="114.0" styleClass="course-header" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Finals">
-                                       <font>
-                                          <Font name="Helvetica Neue" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </HBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <HBox alignment="CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
-                                 <children>
-                                    <TextField editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </VBox>
-               </children>
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
-            </GridPane>
-         </center>
          <top>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
@@ -249,7 +88,7 @@
                                     </StackPane>
                                     <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
                                        <children>
-                                          <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number" StackPane.alignment="CENTER_LEFT">
+                                          <Text fx:id="student_number" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number" StackPane.alignment="CENTER_LEFT">
                                              <font>
                                                 <Font name="Helvetica Bold" size="18.0" />
                                              </font>
@@ -274,7 +113,7 @@
                                     </StackPane>
                                     <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="450.0">
                                        <children>
-                                          <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name" StackPane.alignment="CENTER_LEFT">
+                                          <Text fx:id="student_name" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name" StackPane.alignment="CENTER_LEFT">
                                              <font>
                                                 <Font name="Helvetica Bold" size="18.0" />
                                              </font>
@@ -303,7 +142,7 @@
                                     </StackPane>
                                     <StackPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="0.0">
                                        <children>
-                                          <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Program" StackPane.alignment="CENTER_LEFT">
+                                          <Text fx:id="student_program" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Program" StackPane.alignment="CENTER_LEFT">
                                              <font>
                                                 <Font name="Helvetica Bold" size="18.0" />
                                              </font>
@@ -356,12 +195,12 @@
          <bottom>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                <Button mnemonicParsing="false" style="-fx-background-color: #e2e2e2;" text="PRINT">
+                <Button fx:id="print_btn" mnemonicParsing="false" style="-fx-background-color: #e2e2e2;" text="PRINT">
                      <font>
                         <Font name="Helvetica Neue Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #074072;" text="UDPATE" textFill="WHITE">
+                  <Button fx:id="update_btn" mnemonicParsing="false" style="-fx-background-color: #074072;" text="UDPATE" textFill="WHITE">
                      <font>
                         <Font name="Helvetica Neue Bold" size="16.0" />
                      </font>
@@ -375,6 +214,165 @@
                </padding>
             </ButtonBar>
          </bottom>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <GridPane hgap="100.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="125.0" styleClass="course-header">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Course Code">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" styleClass="course-header" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Course Description">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" styleClass="course-header">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Units">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1">
+                           <children>
+                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="113.5" styleClass="course-header" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Prelims">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="113.5" styleClass="course-header" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Midterm">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="114.0" styleClass="course-header" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Pre-Finals">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                              <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="114.0" styleClass="course-header" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Finals">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </GridPane>
+               </top>
+               <center>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox fx:id="course_box" maxHeight="50.0" minHeight="25.0" prefWidth="200.0" spacing="100.0">
+                           <children>
+                              <HBox alignment="CENTER" fillHeight="false" maxHeight="50.0" minHeight="25.0" minWidth="-Infinity" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="125.0">
+                                       <children>
+                                          <Text fx:id="course_code" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="courses-details" text="00000">
+                                             <font>
+                                                <Font name="Helvetica Neue" size="16.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane alignment="CENTER_LEFT" maxHeight="100.0" minHeight="25.0" minWidth="-Infinity" prefWidth="260.0" snapToPixel="false" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="course_description" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Course 1" textAlignment="JUSTIFY" wrappingWidth="260.0">
+                                             <font>
+                                                <Font name="Helvetica Neue Light" size="16.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="2.5" top="2.5" />
+                                       </padding>
+                                    </StackPane>
+                                    <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="75.0">
+                                       <children>
+                                          <Text fx:id="course_units" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="0">
+                                             <font>
+                                                <Font name="Helvetica Neue" size="16.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="prelim_grade" editable="false">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </TextField>
+                                    <TextField fx:id="midterm_grade" editable="false">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </TextField>
+                                    <TextField fx:id="prefinal_grade" editable="false">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </TextField>
+                                    <TextField fx:id="final_grade" editable="false">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </center>
       </BorderPane>
    </center>
    <top>
