@@ -110,6 +110,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **JavaFX**: For building the graphical user interface.
 - **Maven**: For project management and dependency handling.
 
----
-
-Feel free to adapt this README as needed for your project’s specific requirements. This structure includes the most important information and guides users on how to set up and contribute to the project. Let me know if you'd like any specific changes!
