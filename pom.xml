@@ -8,7 +8,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <javafx.version>21.0.5</javafx.version> <!-- Define the JavaFX version here -->
+        <javafx.version>23.0.1</javafx.version> <!-- Define the JavaFX version here -->
     </properties>
     <dependencies>
          <dependency>
