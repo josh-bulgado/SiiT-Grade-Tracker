@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.sgpt</groupId>
+    <groupId>com.siit</groupId>
     <artifactId>siit-grade-tracker</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
@@ -12,8 +12,8 @@
     </properties>
     <dependencies>
          <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>8.0.33</version>
         </dependency>
         <dependency>
@@ -43,7 +43,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>com.sgpt.siit-grade-tracker.App</mainClass>
+                    <mainClass>com.siit.gradetracker.SiiTApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>

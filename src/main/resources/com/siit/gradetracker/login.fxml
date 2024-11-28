@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../../../styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.LoginController">
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="832.0" fitWidth="1280.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Group%2037117-4.jpg" />
+               </image>
+            </ImageView>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+               <top>
+                  <StackPane BorderPane.alignment="CENTER">
+                     <children>
+                        <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="28.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </top>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+               <center>
+                  <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="200.0" prefWidth="371.0" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" spacing="20.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="emailAddressField" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" promptText="email@example.com" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children></VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="passwordVisibleField" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" promptText="email@example.com">
+                                             <font>
+                                                <Font name="Helvetica Neue" size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <PasswordField fx:id="passwordField" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" promptText="Password">
+                                             <font>
+                                                <Font name="Helvetica Neue" size="16.0" />
+                                             </font>
+                                          </PasswordField>
+                                          <Button fx:id="togglePasswordBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#togglePasswordVisibility" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" StackPane.alignment="CENTER_RIGHT">
+                                             <graphic>
+                                                <SVGPath content="M45.6667 24.1667C41.4583 14.3959 33.5417 8.33337 25 8.33337C16.4584 8.33337 8.54168 14.3959 4.33335 24.1667C4.21864 24.4296 4.15942 24.7133 4.15942 25C4.15942 25.2868 4.21864 25.5705 4.33335 25.8334C8.54168 35.6042 16.4584 41.6667 25 41.6667C33.5417 41.6667 41.4583 35.6042 45.6667 25.8334C45.7814 25.5705 45.8406 25.2868 45.8406 25C45.8406 24.7133 45.7814 24.4296 45.6667 24.1667ZM25 37.5C18.3958 37.5 12.1458 32.7292 8.54168 25C12.1458 17.2709 18.3958 12.5 25 12.5C31.6042 12.5 37.8542 17.2709 41.4583 25C37.8542 32.7292 31.6042 37.5 25 37.5ZM25 16.6667C23.3518 16.6667 21.7407 17.1554 20.3703 18.0711C18.9999 18.9868 17.9318 20.2883 17.301 21.811C16.6703 23.3337 16.5053 25.0093 16.8268 26.6258C17.1483 28.2423 17.942 29.7272 19.1075 30.8926C20.2729 32.058 21.7578 32.8517 23.3743 33.1733C24.9908 33.4948 26.6663 33.3298 28.189 32.699C29.7118 32.0683 31.0133 31.0002 31.9289 29.6298C32.8446 28.2594 33.3333 26.6482 33.3333 25C33.3333 22.7899 32.4554 20.6703 30.8926 19.1075C29.3298 17.5447 27.2102 16.6667 25 16.6667ZM25 29.1667C24.1759 29.1667 23.3703 28.9223 22.6851 28.4645C21.9999 28.0067 21.4659 27.3559 21.1505 26.5946C20.8352 25.8332 20.7526 24.9954 20.9134 24.1872C21.0742 23.3789 21.471 22.6365 22.0537 22.0538C22.6365 21.471 23.3789 21.0742 24.1871 20.9134C24.9954 20.7527 25.8332 20.8352 26.5945 21.1505C27.3559 21.4659 28.0066 22 28.4645 22.6852C28.9223 23.3704 29.1667 24.176 29.1667 25C29.1667 26.1051 28.7277 27.1649 27.9463 27.9463C27.1649 28.7277 26.1051 29.1667 25 29.1667Z" fill="#074072" scaleX="0.5" scaleY="0.5" />
+                                             </graphic>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" />
+                                             </StackPane.margin>
+                                          </Button>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <Button fx:id="loginBtn" maxHeight="49.0" maxWidth="371.0" mnemonicParsing="false" onAction="#login" text="Log in" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="28.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
