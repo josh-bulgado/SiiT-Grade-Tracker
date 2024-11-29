@@ -1,14 +1,9 @@
 package com.siit.gradetracker;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -49,10 +44,9 @@ public class SiiTApp extends Application {
 
             @Override
             public void start(Stage splashStage) throws IOException {
-                // Load the splash screen FXML
                 FXMLLoader loader = new FXMLLoader(SiiTApp.class.getResource("splash_screen.fxml"));
                 Parent splashRoot = loader.load();
-                Scene splashScene = new Scene(splashRoot, 750, 350); // Adjust size if needed
+                Scene splashScene = new Scene(splashRoot, 750, 350);
                 splashStage.setScene(splashScene);
                 splashStage.setAlwaysOnTop(true);
                 splashStage.setTitle("Loading...");
