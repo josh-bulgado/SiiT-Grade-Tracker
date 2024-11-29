@@ -24,15 +24,23 @@
             </ImageView>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
                <top>
-                  <StackPane BorderPane.alignment="CENTER">
+                  <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                      <children>
-                        <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
+                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/SiiT-4.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Information and Integrated Tracking">
                            <font>
-                              <Font name="Helvetica Neue Bold" size="28.0" />
+                              <Font name="Helvetica Neue" size="18.0" />
                            </font>
                         </Text>
                      </children>
-                  </StackPane>
+                     <BorderPane.margin>
+                        <Insets bottom="50.0" />
+                     </BorderPane.margin>
+                  </VBox>
                </top>
                <padding>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

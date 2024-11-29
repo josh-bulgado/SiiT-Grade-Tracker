@@ -42,50 +42,21 @@ public class SiiTApp extends Application {
     public static class SplashScreen {
 
         public static void launchSplashScreen(String[] args) {
-            Application.launch(SplashScreenApp.class, args);
+            Application.launch(SplashScreenApp.class, args); // Launch splash screen
         }
 
         public static class SplashScreenApp extends Application {
 
             @Override
-            public void start(Stage splashStage) {
-                // Create splash screen content
-                StackPane root = new StackPane();
-                ImageView splashImage = new ImageView(
-                        new Image(SiiTApp.class.getResource("/images/Bratz2021Apparel.png").toExternalForm()));
-
-                splashImage.setFitWidth(960);
-                splashImage.setPreserveRatio(true);
-                root.getChildren().add(splashImage);
-
-                Scene splashScene = new Scene(root, 960, 250); // Adjust dimensions
+            public void start(Stage splashStage) throws IOException {
+                // Load the splash screen FXML
+                FXMLLoader loader = new FXMLLoader(SiiTApp.class.getResource("splash_screen.fxml"));
+                Parent splashRoot = loader.load();
+                Scene splashScene = new Scene(splashRoot, 750, 350); // Adjust size if needed
                 splashStage.setScene(splashScene);
                 splashStage.setAlwaysOnTop(true);
                 splashStage.setTitle("Loading...");
                 splashStage.show();
-
-                // Simulate loading task
-                Task<Void> loadTask = new Task<>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        Thread.sleep(500); // Simulate loading delay
-                        return null;
-                    }
-                };
-
-                loadTask.setOnSucceeded(event -> {
-                    splashStage.close(); // Close splash screen
-                    Platform.runLater(() -> {
-                        // Launch the main application
-                        try {
-                            new SiiTApp().start(new Stage());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    });
-                });
-
-                new Thread(loadTask).start();
             }
         }
     }

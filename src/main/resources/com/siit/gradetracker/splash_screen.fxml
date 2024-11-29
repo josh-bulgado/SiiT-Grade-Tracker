@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.SplashScreenController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="750.0">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/SiiT-6.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student Information and Integrated Tracking">
+                     <font>
+                        <Font name="Helvetica Neue Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="82.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextFlow prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #074072; -fx-border-width: 0 0 3px 0;" textAlignment="JUSTIFY">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SiiT is a comprehensive system designed to help educators and students track academic performance over time. It allows the recording, updating, and viewing of student grades across various subjects and generates detailed reports to monitor academic progress." textAlignment="JUSTIFY">
+                           <font>
+                              <Font name="Helvetica Neue" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </TextFlow>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agao, Bulgado, Ellana, Suarez, Vicente" StackPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font name="Helvetica Neue Italic" size="11.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="30.0" left="50.0" right="50.0" top="50.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <left>
+            <ImageView fitHeight="350.0" fitWidth="200.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../images/Frame%2014.png" />
+               </image>
+            </ImageView>
+         </left>
+      </BorderPane>
+      <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" prefHeight="15.0" progress="0.0" style="-fx-background-radius: 0;" StackPane.alignment="BOTTOM_CENTER" />
+   </children>
+</StackPane>

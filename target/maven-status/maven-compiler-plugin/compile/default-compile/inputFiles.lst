@@ -1,11 +1,13 @@
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/faculty/FacultySLController.java
+/Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/SplashScreenController.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/LoginController.java
-/Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/InitialPageController.java
+/Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/main/Course.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/students/StudentDashboardController.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/faculty/FacultyDashboardCentralController.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/faculty/FacultyArchiveController.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/main/DatabaseConnection.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/students/StudentInformation.java
+/Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/util/GradeComputation.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/students/StudentCCController.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/com/siit/gradetracker/main/CheckCredentials.java
 /Users/joshuabulgado/Offline Document/siit-grade-tracker/src/main/java/module-info.java

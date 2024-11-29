@@ -48,14 +48,15 @@ public class LoginController implements Initializable {
             if (role.equals("student")) {
                 StudentDashboardController.setStudentId(fetchStudentId(emailAddress));
                 SiiTApp.setRoot("student_dashboard");
-            }
-
-            if (role.equals("faculty")) {
+            } else if (role.equals("faculty")) {
                 FacultyDashboardCentralController.setDepartment(role);
                 SiiTApp.setRoot("faculty_dashboard");
+            } else {
+                throw new IOException("Invalid email address or password");
             }
+
         } catch (IOException ioe) {
-            showErrorDialog("Invalid email address or password");
+            showErrorDialog(ioe.getMessage());
         }
 
     }

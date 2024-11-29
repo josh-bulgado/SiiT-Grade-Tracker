@@ -41,3 +41,12 @@
 .radius {
 	-fx-background-radius: 6;
 }
+
+/* .studentoverview {
+	-fx-background-image: url("/src/main/resources/com/siit/images/group2.jpg");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover;
+	-fx-background-position: center;
+	-fx-background-radius: 20px;
+	-fx-border-radius: 20px;
+} */

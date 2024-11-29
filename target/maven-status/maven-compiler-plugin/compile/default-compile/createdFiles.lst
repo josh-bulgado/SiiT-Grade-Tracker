@@ -1,6 +1,9 @@
 com/siit/gradetracker/SiiTApp$SplashScreen$SplashScreenApp.class
 com/siit/gradetracker/faculty/FacultyDashboardController.class
+com/siit/gradetracker/SplashScreenController$1.class
+com/siit/gradetracker/util/GradeComputation.class
 com/siit/gradetracker/SiiTApp$SplashScreen.class
+com/siit/gradetracker/SplashScreenController.class
 com/siit/gradetracker/SiiTApp.class
 module-info.class
 com/siit/gradetracker/faculty/FacultyDashboardCentralController.class
@@ -10,7 +13,6 @@ com/siit/gradetracker/students/StudentDashboardController.class
 com/siit/gradetracker/students/StudentInformation.class
 com/siit/gradetracker/main/CheckCredentials.class
 com/siit/gradetracker/students/StudentCCController.class
-com/siit/gradetracker/InitialPageController.class
-com/siit/gradetracker/SiiTApp$SplashScreen$SplashScreenApp$1.class
 com/siit/gradetracker/LoginController.class
 com/siit/gradetracker/faculty/FacultySLController.class
+com/siit/gradetracker/main/Course.class
