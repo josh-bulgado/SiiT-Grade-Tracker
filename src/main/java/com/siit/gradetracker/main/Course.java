@@ -6,6 +6,7 @@ public class Course {
   private Double courseGrade;
   private int courseUnit;
   private boolean isIncludedInGWA;
+  private String courseCode;
 
   // Constructor
   public Course(String courseDescription, Double[] grades, Double courseGrade, int courseUnit,
@@ -15,6 +16,16 @@ public class Course {
     this.courseGrade = courseGrade;
     this.courseUnit = courseUnit;
     this.isIncludedInGWA = isIncludedInGWA;
+  }
+
+  public Course(String courseDescription, Double[] grades, Double courseGrade, int courseUnit,
+      boolean isIncludedInGWA, String courseCode) {
+    this.courseDescription = courseDescription;
+    this.grades = grades;
+    this.courseGrade = courseGrade;
+    this.courseUnit = courseUnit;
+    this.isIncludedInGWA = isIncludedInGWA;
+    this.courseCode = courseCode;
   }
 
   // Getters and Setters
@@ -36,5 +47,9 @@ public class Course {
 
   public boolean isIncludedInGWA() {
     return isIncludedInGWA;
+  }
+
+  public String getCourseCode() {
+    return courseCode;
   }
 }

@@ -13,6 +13,10 @@ public class StudentInformation {
     this.programAcronym = programAcronym;
   }
 
+  public StudentInformation(String studentId) {
+    this.studentId = studentId;
+  }
+
   // Getters and Setters
   public String getStudentId() {
     return studentId;

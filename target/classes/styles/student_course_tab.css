@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+}
+
+.text-field {
+	-fx-background-color: #ffffff;
+	-fx-border-color: #074072;
+}

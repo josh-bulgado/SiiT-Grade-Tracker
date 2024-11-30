@@ -10,15 +10,15 @@ import javafx.fxml.*;
 
 public class FacultyDashboardCentralController implements Initializable {
 
-    private static String department;
+    protected static int programId;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
     }
 
-    public static void setDepartment(String department) {
-        FacultyDashboardCentralController.department = department;
+    public static void setProgramId(int programId) {
+        FacultyDashboardCentralController.programId = programId;
     }
 
     @FXML

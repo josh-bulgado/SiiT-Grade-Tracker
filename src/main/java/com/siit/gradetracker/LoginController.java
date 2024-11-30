@@ -49,13 +49,15 @@ public class LoginController implements Initializable {
                 StudentDashboardController.setStudentId(fetchStudentId(emailAddress));
                 SiiTApp.setRoot("student_dashboard");
             } else if (role.equals("faculty")) {
-                FacultyDashboardCentralController.setDepartment(role);
+                System.out.println(fetchProgramId(emailAddress));
+                FacultyDashboardCentralController.setProgramId(fetchProgramId(emailAddress));
                 SiiTApp.setRoot("faculty_dashboard");
             } else {
                 throw new IOException("Invalid email address or password");
             }
 
         } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
             showErrorDialog(ioe.getMessage());
         }
 
@@ -103,9 +105,9 @@ public class LoginController implements Initializable {
             conn = DatabaseConnection.getConnection();
 
             String query = "SELECT si.student_id "
-                    + "FROM auth.student_login al "
-                    + "JOIN students.student_information si ON al.student_id = si.id "
-                    + "WHERE al.email_address = ?";
+                    + "FROM auth.student_login sl "
+                    + "JOIN students.student_information si ON sl.student_id = si.id "
+                    + "WHERE sl.email_address = ?";
 
             stmt = conn.prepareStatement(query);
             stmt.setString(1, emailAddress);
@@ -116,22 +118,28 @@ public class LoginController implements Initializable {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return null;
+    }
+
+    private int fetchProgramId(String emailAddress) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String query = "SELECT al.program_id "
+                    + "FROM auth.admin_login al "
+                    + "WHERE al.email_address = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, emailAddress);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getInt("program_id");
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getStackTrace();
+        }
+        return 0;
     }
 
 }

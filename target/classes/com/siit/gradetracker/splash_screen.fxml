@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.SplashScreenController">
+<StackPane stylesheets="@../../../styles/splash_screen.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.SplashScreenController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="750.0">
          <center>
@@ -61,13 +61,16 @@
             </VBox>
          </center>
          <left>
-            <ImageView fitHeight="350.0" fitWidth="200.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="350.0" fitWidth="204.0" pickOnBounds="true" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@../images/Frame%2014.png" />
                </image>
             </ImageView>
          </left>
       </BorderPane>
-      <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" prefHeight="15.0" progress="0.0" style="-fx-background-radius: 0;" StackPane.alignment="BOTTOM_CENTER" />
+      <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" prefHeight="15.0" progress="0.28" StackPane.alignment="BOTTOM_CENTER">
+         <StackPane.margin>
+            <Insets bottom="-1.0" />
+         </StackPane.margin></ProgressBar>
    </children>
 </StackPane>
