@@ -3,7 +3,7 @@ module com.siit.gradetracker {
     requires javafx.fxml;
     requires java.base;
     requires java.sql;
-    requires javafx.graphics;
+    requires transitive javafx.graphics;
 
     opens com.siit.gradetracker to javafx.fxml;
     opens com.siit.gradetracker.main to javafx.fxml;
