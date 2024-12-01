@@ -214,7 +214,7 @@
                         <Insets left="30.0" right="30.0" />
                      </padding>
                   </GridPane>
-                  <TilePane fx:id="coursesPane" alignment="CENTER_LEFT" focusTraversable="true" hgap="19.5" prefColumns="2" prefRows="4" prefTileHeight="220.0" prefTileWidth="563.0" vgap="20.0">
+                  <TilePane fx:id="coursesPane" alignment="CENTER_LEFT" focusTraversable="true" hgap="19.5" prefColumns="2" prefRows="4" prefTileWidth="563.0" vgap="20.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>

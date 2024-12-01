@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.*;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -34,7 +35,17 @@ public class StudentCCController implements Initializable {
         courseName.setText(courseDescription);
         updateGradesDisplay();
         if (isAnyGradeZero()) {
-            courseGradePane.setVisible(false);
+            removeCourseGradePane();
+        }
+    }
+
+    @FXML
+    private void removeCourseGradePane() {
+
+        BorderPane borderPane = (BorderPane) courseGradePane.getParent();
+
+        if (borderPane != null) {
+            borderPane.setBottom(null);
         }
     }
 

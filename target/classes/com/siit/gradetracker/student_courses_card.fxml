@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="coursePane" maxHeight="220.0" minHeight="-Infinity" prefHeight="220.0" style="-fx-background-radius: 20px; -fx-background-color: white;" stylesheets="@../../../styles/student_courses_card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.students.StudentCCController">
+<StackPane fx:id="coursePane" maxHeight="220.0" minHeight="160.0" style="-fx-background-radius: 20px; -fx-background-color: white;" stylesheets="@../../../styles/student_courses_card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.students.StudentCCController">
    <children>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="180.0" prefWidth="563.0" style="-fx-background-radius: 20px;">
+      <BorderPane maxWidth="1.7976931348623157E308" prefWidth="563.0" style="-fx-background-radius: 20px;">
          <top>
             <StackPane alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #074072; -fx-background-radius: 20px 20px 0 0;" BorderPane.alignment="CENTER">
                <children>
@@ -30,14 +30,14 @@
             </StackPane>
          </top>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox maxHeight="120.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                  <HBox maxHeight="90.0" spacing="20.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets left="15.0" right="15.0" top="30.0" />
                      </VBox.margin>
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 20px;" styleClass="radius" stylesheets="@../../../styles/student_courses_card.css" HBox.hgrow="ALWAYS">
+                        <VBox maxHeight="90.0" prefWidth="100.0" style="-fx-background-radius: 20px;" styleClass="radius" stylesheets="@../../../styles/student_courses_card.css" HBox.hgrow="ALWAYS">
                            <children>
                               <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
@@ -62,7 +62,7 @@
                               </StackPane>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
+                        <VBox maxHeight="90.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
                            <children>
                               <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
@@ -87,7 +87,7 @@
                               </StackPane>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
+                        <VBox maxHeight="90.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
                            <children>
                               <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
@@ -112,7 +112,7 @@
                               </StackPane>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
+                        <VBox maxHeight="90.0" prefWidth="100.0" styleClass="radius" HBox.hgrow="ALWAYS">
                            <children>
                               <StackPane prefHeight="20.0" prefWidth="200.0" styleClass="upper-radius">
                                  <children>
