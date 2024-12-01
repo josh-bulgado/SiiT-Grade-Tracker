@@ -9,6 +9,7 @@ import java.util.*;
 import com.siit.gradetracker.SiiTApp;
 import com.siit.gradetracker.main.Course;
 import com.siit.gradetracker.main.DatabaseConnection;
+import com.siit.gradetracker.main.SemesterInfo;
 import com.siit.gradetracker.util.*;
 
 import javafx.fxml.*;
@@ -22,7 +23,7 @@ import javafx.scene.Node;
 public class GradeBoardController extends FacultySLController {
 
     private static String studentId;
-    private Map<String, List<Course>> coursesBySemester = new HashMap<>();
+    private Map<String, SemesterInfo> coursesBySemester = new HashMap<>();
     private List<String> semester = new ArrayList<>();
     private boolean isUpdateMode = true;
     private List<TextField> textFields = new ArrayList<>();
@@ -41,7 +42,7 @@ public class GradeBoardController extends FacultySLController {
     private TextField prelimTextField, midtermTextField, prefinalTextField, finalTextField;
 
     @FXML
-    private Text student_number, student_name, student_program, year_level;
+    private Text student_number, student_name, student_program, year_level, total_unit, semester_gwa;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,6 +63,8 @@ public class GradeBoardController extends FacultySLController {
             semester.addAll(coursesBySemester.keySet());
             String currentSemester = semester.get(semester.size() - 2);
             displayStudentCourse(currentSemester);
+            updateTotalUnit(currentSemester);
+            updateSemesterGWA(currentSemester);
         } catch (SQLException e) {
             e.printStackTrace();
             de.showErrorDialog("Error", "An error occurred while fetching student information. Please try again.");
@@ -114,7 +117,7 @@ public class GradeBoardController extends FacultySLController {
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, studentId);
             try (ResultSet rs = stmt.executeQuery()) {
-
+                Map<String, List<Course>> tempCoursesBySemester = new HashMap<>();
                 while (rs.next()) {
                     String semester = rs.getString("semester");
                     String courseCode = rs.getString("course_code");
@@ -131,9 +134,11 @@ public class GradeBoardController extends FacultySLController {
                     double courseGrade = gradeCompute.computeCourseGrade(grades);
                     boolean isIncludedInGWA = rs.getBoolean("included_in_gwa");
 
-                    Course course = new Course(courseCode, courseDescription, courseUnit, grades, courseGrade, isIncludedInGWA);
-                    coursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
+                    Course course = new Course(courseCode, courseDescription, courseUnit, grades, courseGrade,
+                            isIncludedInGWA);
+                    tempCoursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
                 }
+                calculateSemesterGWA(tempCoursesBySemester);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -141,10 +146,35 @@ public class GradeBoardController extends FacultySLController {
         }
     }
 
+    private void calculateSemesterGWA(Map<String, List<Course>> tempCoursesBySemester) {
+        for (Map.Entry<String, List<Course>> entry : tempCoursesBySemester.entrySet()) {
+            String semester = entry.getKey();
+            List<Course> courses = entry.getValue();
+
+            // Calculate the GWA for the semester
+            double totalUnits = 0;
+            double totalCredits = 0;
+            int overAllUnits = 0;
+
+            for (Course course : courses) {
+                overAllUnits += course.getCourseUnit();
+                if (course.isIncludedInGWA()) {
+                    totalUnits += course.getCourseUnit();
+                    totalCredits += course.getCourseGrade() * course.getCourseUnit();
+                }
+            }
+
+            double gwa = totalUnits > 0 ? totalCredits / totalUnits : 0.0;
+
+            // Store the SemesterInfo (list of courses and calculated GWA) in the map
+            coursesBySemester.put(semester, new SemesterInfo(courses, gwa, overAllUnits));
+        }
+    }
+
     private void displayStudentCourse(String semester) {
         course_section.getChildren().clear();
 
-        List<Course> courses = coursesBySemester.get(semester);
+        List<Course> courses = coursesBySemester.get(semester).getCourses();
         List<HBox> courseCards = new ArrayList<>();
 
         for (Course course : courses) {
@@ -207,7 +237,6 @@ public class GradeBoardController extends FacultySLController {
 
     @FXML
     private void saveGrades() {
-
         changeTextField(textFields, false);
     }
 
@@ -224,6 +253,16 @@ public class GradeBoardController extends FacultySLController {
                 field.getStyleClass().add("text-field-is-not-editable");
             }
         }
+    }
+
+    @FXML
+    private void updateTotalUnit(String semester) {
+        total_unit.setText(Integer.toString(coursesBySemester.get(semester).getOverAllUnits()));
+    }
+
+    @FXML
+    private void updateSemesterGWA(String semester) {
+        semester_gwa.setText(String.format("%.2f", coursesBySemester.get(semester).getGwa()));
     }
 
     @FXML
