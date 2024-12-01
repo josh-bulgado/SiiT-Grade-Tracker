@@ -10,17 +10,22 @@ import com.siit.gradetracker.SiiTApp;
 import com.siit.gradetracker.main.Course;
 import com.siit.gradetracker.main.DatabaseConnection;
 
+import javafx.application.Platform;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.Node;
 
 public class GradeBoardController extends FacultySLController {
 
     private static String studentId;
     private Map<String, List<Course>> coursesBySemester = new TreeMap<>();
-    private List<String> semester = new ArrayList<>();;
+    private List<String> semester = new ArrayList<>();
+    private boolean isUpdateMode = true;
+    private List<TextField> textFields = new ArrayList<>();
 
     @FXML
     private VBox course_section;
@@ -29,7 +34,10 @@ public class GradeBoardController extends FacultySLController {
     private HBox course_box;
 
     @FXML
-    private Button studentBtn, backBtn;
+    private Button studentBtn, backBtn, updateSaveBtn;
+
+    @FXML
+    private TextField prelimTextField, midtermTextField, prefinalTextField, finalTextField;
 
     @FXML
     private Text student_number, student_name, student_program, year_level;
@@ -50,8 +58,9 @@ public class GradeBoardController extends FacultySLController {
             fetchStudentInformation(conn);
             fetchStudentCourse(conn);
             semester.addAll(coursesBySemester.keySet());
-            String currentSemester = semester.get(semester.size() - 1);
-            displayStudentCourse(currentSemester);
+
+            String currentSemester = semester.get(semester.size() - 2);
+            Platform.runLater(() -> displayStudentCourse(currentSemester));
         } catch (SQLException e) {
             e.getStackTrace();
         }
@@ -86,7 +95,6 @@ public class GradeBoardController extends FacultySLController {
     }
 
     private void fetchStudentCourse(Connection conn) {
-        System.out.println("invoking hehe");
         String query = "SELECT sg.prelims_grade, sg.midterm_grade, sg.prefinals_grade, sg.finals_grade, "
                 + "c.*, CONCAT(sy.school_year_name, ' ', t.term_name) AS semester "
                 + "FROM students.student_grades sg "
@@ -101,43 +109,48 @@ public class GradeBoardController extends FacultySLController {
 
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, studentId);
-            // stmt.setString(2, semester);
             try (ResultSet rs = stmt.executeQuery()) {
 
                 while (rs.next()) {
-                    String semesterResult = rs.getString("semester");
+                    String semester = rs.getString("semester");
                     String courseCode = rs.getString("course_code");
                     String courseDescription = rs.getString("course_description");
                     int courseUnit = rs.getInt("course_unit");
 
-                    double prelimsGrade = rs.getDouble("prelims_grade");
-                    double midtermGrade = rs.getDouble("midterm_grade");
-                    double prefinalsGrade = rs.getDouble("prefinals_grade");
-                    double finalsGrade = rs.getDouble("finals_grade");
-
-                    double[] grades = { prelimsGrade, midtermGrade, prefinalsGrade, finalsGrade };
+                    double[] grades = {
+                            rs.getDouble("prelims_grade"),
+                            rs.getDouble("midterm_grade"),
+                            rs.getDouble("prefinals_grade"),
+                            rs.getDouble("finals_grade")
+                    };
 
                     Course course = new Course(courseCode, courseDescription, courseUnit, grades);
-                    coursesBySemester.computeIfAbsent(semesterResult, k -> new ArrayList<>()).add(course);
+                    coursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
                 }
+                semester.addAll(coursesBySemester.keySet());
+                String currentSemester = semester.get(semester.size() - 2); // Get the latest semester
+                Platform.runLater(() -> displayStudentCourse(currentSemester));
             }
         } catch (SQLException e) {
-            e.getStackTrace();
+            e.printStackTrace();
         }
     }
 
     private void displayStudentCourse(String semester) {
+        course_section.getChildren().clear();
         List<Course> courses = coursesBySemester.get(semester);
 
         List<HBox> courseCards = new ArrayList<>();
 
         for (Course course : courses) {
             course_box = loadStudentCourseCard();
+            System.out.println(course.getCourseDescription());
             StudentCourseTabController.setCourse(course.getCourseCode(), course.getCourseDescription(),
                     course.getCourseUnit(), course.getGrades());
 
             courseCards.add(course_box);
         }
+
         course_section.getChildren().addAll(courseCards);
     }
 
@@ -149,6 +162,63 @@ public class GradeBoardController extends FacultySLController {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @FXML
+    private void handleUpdateSaveButton() {
+        if (isUpdateMode) {
+            updateStudentGrades();
+            updateSaveBtn.setText("SAVE");
+        } else {
+            saveGrades();
+            updateSaveBtn.setText("UPDATE");
+        }
+
+        isUpdateMode = !isUpdateMode;
+    }
+
+    @FXML
+    private void updateStudentGrades() {
+        for (Node node : course_section.getChildren()) {
+            // Check if the node is an instance of HBox
+            if (node instanceof HBox) {
+                HBox courseCard = (HBox) node;
+
+                // Lookup the TextFields within the HBox
+                prelimTextField = (TextField) courseCard.lookup("#prelim_grade");
+                midtermTextField = (TextField) courseCard.lookup("#midterm_grade");
+                prefinalTextField = (TextField) courseCard.lookup("#prefinal_grade");
+                finalTextField = (TextField) courseCard.lookup("#final_grade");
+                textFields.add(prelimTextField);
+                textFields.add(midtermTextField);
+                textFields.add(prefinalTextField);
+                textFields.add(finalTextField);
+
+                changeTextField(textFields, true);
+
+            }
+        }
+    }
+
+    @FXML
+    private void saveGrades() {
+
+        changeTextField(textFields, false);
+    }
+
+    @FXML
+    private void changeTextField(List<TextField> textFields, boolean isEditable) {
+
+        for (TextField field : textFields) {
+            field.setEditable(isEditable);
+            if (isEditable) {
+                field.getStyleClass().add("text-field-is-editable");
+                field.getStyleClass().remove("text-field-is-not-editable");
+            } else {
+                field.getStyleClass().remove("text-field-is-editable");
+                field.getStyleClass().add("text-field-is-not-editable");
+            }
         }
     }
 

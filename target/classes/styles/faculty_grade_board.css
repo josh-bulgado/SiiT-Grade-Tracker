@@ -3,42 +3,34 @@
  */
 
 .mainFxmlClass {
-
 }
-
 
 .course-header {
-    -fx-background-color: #074072;
-    
-}
-.text-field {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #074072;
+	-fx-background-color: #074072;
 }
 
 .button {
-    -fx-background-color: transparent;
-    -fx-transition: background-color 0.3s ease-in-out;
+	-fx-background-color: transparent;
+	-fx-transition: background-color 0.3s ease-in-out;
 }
 
 .button:hover {
-    -fx-background-color: white;
-    -fx-fill: #074072; 
-    -fx-cursor: hand;
+	-fx-background-color: white;
+	-fx-fill: #074072;
+	-fx-cursor: hand;
 }
-
 
 .button:hover .svg,
 .button:active .svg {
-    -fx-fill: #074072;  
+	-fx-fill: #074072;
 }
 
 .button.active,
 .button.active .svg {
-    -fx-background-color: white;
-    -fx-fill: #074072;  
+	-fx-background-color: white;
+	-fx-fill: #074072;
 }
 
 .svg {
-    -fx-fill: white;
+	-fx-fill: white;
 }

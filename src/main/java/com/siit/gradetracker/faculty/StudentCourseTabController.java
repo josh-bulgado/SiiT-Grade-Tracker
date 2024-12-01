@@ -40,12 +40,6 @@ public class StudentCourseTabController implements Initializable {
         course_unit.setText(Integer.toString(courseUnit));
     }
 
-    // private void updateCourseGrade() {
-    // prelim_grade.setText(grades[0]);
-    // midterm_grade.setText(grades[1] >= 0.0 ? formatGrade(grades[1]) : "0.0");
-    // prefinal_grade.setText(grades[2] >= 0.0 ? formatGrade(grades[2]) : "0.0");
-    // final_grade.setText(grades[3] >= 0.0 ? formatGrade(grades[3]) : "0.0");
-    // }
     private void updateCourseGrade() {
         prelim_grade.setText(Double.toString(grades[0]));
         midterm_grade.setText(Double.toString(grades[1]));
