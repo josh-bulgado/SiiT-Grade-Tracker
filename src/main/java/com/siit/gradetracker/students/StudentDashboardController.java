@@ -188,8 +188,10 @@ public class StudentDashboardController implements Initializable {
             // Calculate the GWA for the semester
             double totalUnits = 0;
             double totalCredits = 0;
+            int overAllUnits = 0;
 
             for (Course course : courses) {
+                overAllUnits += course.getCourseUnit();
                 if (course.isIncludedInGWA()) {
                     totalUnits += course.getCourseUnit();
                     totalCredits += course.getCourseGrade() * course.getCourseUnit();
@@ -199,7 +201,7 @@ public class StudentDashboardController implements Initializable {
             double gwa = totalUnits > 0 ? totalCredits / totalUnits : 0.0;
 
             // Store the SemesterInfo (list of courses and calculated GWA) in the map
-            coursesBySemester.put(semester, new SemesterInfo(courses, gwa));
+            coursesBySemester.put(semester, new SemesterInfo(courses, gwa, overAllUnits));
         }
     }
 
