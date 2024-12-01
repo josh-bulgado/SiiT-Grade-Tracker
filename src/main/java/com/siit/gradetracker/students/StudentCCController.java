@@ -11,8 +11,8 @@ import javafx.scene.text.Text;
 public class StudentCCController implements Initializable {
 
     private static String courseDescription;
-    private static Double[] grades = new Double[4];
-    private static Double courseGrade;
+    private static double[] grades = new double[4];
+    private static double courseGrade;
 
     @FXML
     private Text courseName;
@@ -38,7 +38,7 @@ public class StudentCCController implements Initializable {
         }
     }
 
-    public static void setCourseInformation(String courseDescription, Double[] grades, Double courseGrade) {
+    public static void setCourseInformation(String courseDescription, double[] grades, Double courseGrade) {
         StudentCCController.courseDescription = courseDescription;
         StudentCCController.grades = grades;
         StudentCCController.courseGrade = courseGrade;

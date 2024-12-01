@@ -11,7 +11,8 @@ import javafx.scene.text.Text;
 
 public class StudentCourseTabController implements Initializable {
 
-    private static String courseCode, courseDescription, courseUnit;
+    private static String courseCode, courseDescription;
+    private static int courseUnit;
     private static double[] grades = new double[4];
 
     @FXML
@@ -26,7 +27,7 @@ public class StudentCourseTabController implements Initializable {
         updateCourseGrade();
     }
 
-    public static void setCourse(String courseCode, String courseDescription, String courseUnit, double[] grades) {
+    public static void setCourse(String courseCode, String courseDescription, int courseUnit, double[] grades) {
         StudentCourseTabController.courseCode = courseCode;
         StudentCourseTabController.courseDescription = courseDescription;
         StudentCourseTabController.courseUnit = courseUnit;
@@ -36,18 +37,25 @@ public class StudentCourseTabController implements Initializable {
     private void updateCourseInformation() {
         course_code.setText(courseCode);
         course_description.setText(courseDescription);
-        course_unit.setText(courseUnit);
+        course_unit.setText(Integer.toString(courseUnit));
     }
 
+    // private void updateCourseGrade() {
+    // prelim_grade.setText(grades[0]);
+    // midterm_grade.setText(grades[1] >= 0.0 ? formatGrade(grades[1]) : "0.0");
+    // prefinal_grade.setText(grades[2] >= 0.0 ? formatGrade(grades[2]) : "0.0");
+    // final_grade.setText(grades[3] >= 0.0 ? formatGrade(grades[3]) : "0.0");
+    // }
     private void updateCourseGrade() {
-        prelim_grade.setText(grades[0] != 0 ? formatGrade(grades[0]) : "");
-        midterm_grade.setText(grades[1] != 0 ? formatGrade(grades[1]) : "");
-        prefinal_grade.setText(grades[2] != 0 ? formatGrade(grades[2]) : "");
-        final_grade.setText(grades[3] != 0 ? formatGrade(grades[3]) : "");
+        prelim_grade.setText(Double.toString(grades[0]));
+        midterm_grade.setText(Double.toString(grades[1]));
+        prefinal_grade.setText(Double.toString(grades[2]));
+        final_grade.setText(Double.toString(grades[3]));
     }
 
-    private String formatGrade(Double grade) {
-        return (grade == grade.intValue()) ? String.format("%d", grade.intValue()) : String.format("%.2f", grade);
-    }
+    // private String formatGrade(Double grade) {
+    // return (grade == grade.intValue()) ? String.format("%d", grade.intValue()) :
+    // String.format("%.2f", grade);
+    // }
 
 }

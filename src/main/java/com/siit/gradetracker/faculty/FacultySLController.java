@@ -12,12 +12,8 @@ import com.siit.gradetracker.students.StudentInformation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 public class FacultySLController extends FacultyDashboardCentralController {
 
@@ -134,7 +130,7 @@ public class FacultySLController extends FacultyDashboardCentralController {
     // This method is called when a user selects a new program from the ComboBox
     private void updateStudentTableForSelectedProgram(String selectedProgram) {
         if (selectedProgram != null) {
-            System.out.println("Updating for program: " + selectedProgram); // Debugging output
+            System.out.println("Updating for program: " + selectedProgram);
             try (Connection conn = DatabaseConnection.getConnection()) {
                 // Fetch the programId corresponding to the selected program acronym
                 String query = "SELECT id FROM sgpt.program WHERE program_acronym = ?";

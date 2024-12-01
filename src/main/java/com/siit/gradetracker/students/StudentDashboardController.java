@@ -229,7 +229,7 @@ public class StudentDashboardController implements Initializable {
     private void fetchStudentCourses(Connection conn) throws SQLException {
         GradeComputation gradeCompute = new GradeComputation();
         String query = "SELECT sg.prelims_grade, sg.midterm_grade, sg.prefinals_grade, sg.finals_grade, "
-                + "c.course_description, c.included_in_gwa, c.course_unit, CONCAT(sy.school_year_name, ' ', t.term_name) AS semester "
+                + "c.*, CONCAT(sy.school_year_name, ' ', t.term_name) AS semester "
                 + "FROM students.student_grades sg "
                 + "JOIN students.student_course sc ON sg.student_courses_id = sc.id "
                 + "JOIN students.student_enrollment se ON sc.student_enrollment_id = se.id "
@@ -246,9 +246,11 @@ public class StudentDashboardController implements Initializable {
                 Map<String, List<Course>> tempCoursesBySemester = new HashMap<>();
                 while (rs.next()) {
                     String semester = rs.getString("semester");
+                    String courseCode = rs.getString("course_code");
                     String courseDescription = rs.getString("course_description");
+                    int courseUnit = rs.getInt("course_unit");
 
-                    Double[] grades = {
+                    double[] grades = {
                             rs.getDouble("prelims_grade"),
                             rs.getDouble("midterm_grade"),
                             rs.getDouble("prefinals_grade"),
@@ -256,12 +258,10 @@ public class StudentDashboardController implements Initializable {
                     };
 
                     System.out.println(courseDescription);
-                    Double courseGrade = gradeCompute.computeCourseGrade(grades);
+                    double courseGrade = gradeCompute.computeCourseGrade(grades);
                     boolean isIncludedInGWA = rs.getBoolean("included_in_gwa");
-
-                    int courseUnit = rs.getInt("course_unit");
-                    Course course = new Course(courseDescription, grades, courseGrade,
-                            courseUnit, isIncludedInGWA);
+                    Course course = new Course(courseCode, courseDescription, courseUnit, grades, courseGrade,
+                            isIncludedInGWA);
                     tempCoursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
                 }
 
@@ -269,10 +269,6 @@ public class StudentDashboardController implements Initializable {
             }
         }
     }
-
-    // private Double[] fetchStudentCourseGrades() {
-
-    // }
 
     private void calculateSemesterGWA(Map<String, List<Course>> tempCoursesBySemester) {
         for (Map.Entry<String, List<Course>> entry : tempCoursesBySemester.entrySet()) {

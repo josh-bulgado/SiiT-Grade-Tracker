@@ -28,7 +28,7 @@ public class GradeComputation {
    * @param grades An array of grades: [prelims, midterm, prefinal, finals]
    * @return The computed course grade
    */
-  public Double computeCourseGrade(Double[] grades) {
+  public double computeCourseGrade(double[] grades) {
     // Calculate weighted score for each grading period
     Double prelimsPS = grades[0] * 0.2;
     Double midtermPS = grades[1] * 0.2;

@@ -49,7 +49,6 @@ public class LoginController implements Initializable {
                 StudentDashboardController.setStudentId(fetchStudentId(emailAddress));
                 SiiTApp.setRoot("student_dashboard");
             } else if (role.equals("faculty")) {
-                System.out.println(fetchProgramId(emailAddress));
                 FacultyDashboardCentralController.setProgramId(fetchProgramId(emailAddress));
                 SiiTApp.setRoot("faculty_dashboard");
             } else {
