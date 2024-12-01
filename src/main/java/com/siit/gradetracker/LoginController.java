@@ -3,6 +3,7 @@ package com.siit.gradetracker;
 import com.siit.gradetracker.faculty.FacultyDashboardCentralController;
 import com.siit.gradetracker.main.*;
 import com.siit.gradetracker.students.*;
+import com.siit.gradetracker.util.DisplayError;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,11 +12,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.*;
 
 public class LoginController implements Initializable {
 
+    private DisplayError de = new DisplayError();
     @FXML
     private TextField emailAddressField;
 
@@ -57,17 +58,9 @@ public class LoginController implements Initializable {
 
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
-            showErrorDialog(ioe.getMessage());
+            de.showErrorDialog("Error", ioe.getMessage());
         }
 
-    }
-
-    private void showErrorDialog(String message) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     @FXML
