@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -304,71 +303,10 @@
                   </GridPane>
                </top>
                <center>
-                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <HBox fx:id="course_box" maxHeight="50.0" minHeight="25.0" prefWidth="200.0" spacing="100.0">
-                           <children>
-                              <HBox alignment="CENTER" fillHeight="false" maxHeight="50.0" minHeight="25.0" minWidth="-Infinity" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="125.0">
-                                       <children>
-                                          <Text fx:id="course_code" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="courses-details" text="00000">
-                                             <font>
-                                                <Font name="Helvetica Neue" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                    </StackPane>
-                                    <StackPane alignment="CENTER_LEFT" maxHeight="100.0" minHeight="25.0" minWidth="-Infinity" prefWidth="260.0" snapToPixel="false" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Text fx:id="course_description" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="Course 1" textAlignment="JUSTIFY" wrappingWidth="260.0">
-                                             <font>
-                                                <Font name="Helvetica Neue Light" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="2.5" top="2.5" />
-                                       </padding>
-                                    </StackPane>
-                                    <StackPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="75.0">
-                                       <children>
-                                          <Text fx:id="course_units" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="course-header-text" text="0">
-                                             <font>
-                                                <Font name="Helvetica Neue" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <TextField fx:id="prelim_grade" editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField fx:id="midterm_grade" editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField fx:id="prefinal_grade" editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField fx:id="final_grade" editable="false">
-                                       <cursor>
-                                          <Cursor fx:constant="DEFAULT" />
-                                       </cursor>
-                                    </TextField>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                     </children>
+                  <VBox fx:id="course_section" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
                   </VBox>
                </center>
             </BorderPane>
