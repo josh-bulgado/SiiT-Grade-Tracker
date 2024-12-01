@@ -9,8 +9,8 @@ import java.util.*;
 import com.siit.gradetracker.SiiTApp;
 import com.siit.gradetracker.main.Course;
 import com.siit.gradetracker.main.DatabaseConnection;
+import com.siit.gradetracker.util.*;
 
-import javafx.application.Platform;
 import javafx.fxml.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -22,10 +22,11 @@ import javafx.scene.Node;
 public class GradeBoardController extends FacultySLController {
 
     private static String studentId;
-    private Map<String, List<Course>> coursesBySemester = new TreeMap<>();
+    private Map<String, List<Course>> coursesBySemester = new HashMap<>();
     private List<String> semester = new ArrayList<>();
     private boolean isUpdateMode = true;
     private List<TextField> textFields = new ArrayList<>();
+    private DisplayError de = new DisplayError();
 
     @FXML
     private VBox course_section;
@@ -57,12 +58,13 @@ public class GradeBoardController extends FacultySLController {
         try (Connection conn = DatabaseConnection.getConnection()) {
             fetchStudentInformation(conn);
             fetchStudentCourse(conn);
-            semester.addAll(coursesBySemester.keySet());
 
+            semester.addAll(coursesBySemester.keySet());
             String currentSemester = semester.get(semester.size() - 2);
-            Platform.runLater(() -> displayStudentCourse(currentSemester));
+            displayStudentCourse(currentSemester);
         } catch (SQLException e) {
-            e.getStackTrace();
+            e.printStackTrace();
+            de.showErrorDialog("Error", "An error occurred while fetching student information. Please try again.");
         }
     }
 
@@ -84,6 +86,7 @@ public class GradeBoardController extends FacultySLController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            de.showErrorDialog("Error", "An error occurred while fetching student information. Please try again.");
         }
     }
 
@@ -127,26 +130,23 @@ public class GradeBoardController extends FacultySLController {
                     Course course = new Course(courseCode, courseDescription, courseUnit, grades);
                     coursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
                 }
-                semester.addAll(coursesBySemester.keySet());
-                String currentSemester = semester.get(semester.size() - 2); // Get the latest semester
-                Platform.runLater(() -> displayStudentCourse(currentSemester));
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            de.showErrorDialog("Error", "An error occurred while fetching student courses. Please try again.");
         }
     }
 
     private void displayStudentCourse(String semester) {
         course_section.getChildren().clear();
-        List<Course> courses = coursesBySemester.get(semester);
 
+        List<Course> courses = coursesBySemester.get(semester);
         List<HBox> courseCards = new ArrayList<>();
 
         for (Course course : courses) {
-            course_box = loadStudentCourseCard();
-            System.out.println(course.getCourseDescription());
             StudentCourseTabController.setCourse(course.getCourseCode(), course.getCourseDescription(),
                     course.getCourseUnit(), course.getGrades());
+            course_box = loadStudentCourseCard();
 
             courseCards.add(course_box);
         }

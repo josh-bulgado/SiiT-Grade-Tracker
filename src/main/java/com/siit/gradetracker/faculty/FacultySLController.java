@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import com.siit.gradetracker.main.DatabaseConnection;
 import com.siit.gradetracker.students.StudentInformation;
+import com.siit.gradetracker.util.DisplayError;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +17,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class FacultySLController extends FacultyDashboardCentralController {
+
+    private DisplayError de = new DisplayError();
 
     @FXML
     private Button studentBtn;
@@ -63,6 +66,7 @@ public class FacultySLController extends FacultyDashboardCentralController {
             fetchStudents(conn);
         } catch (SQLException e) {
             e.printStackTrace();
+            de.showErrorDialog("Error", "An error occurred while fetching student information. Please try again.");
         }
     }
 
@@ -123,6 +127,8 @@ public class FacultySLController extends FacultyDashboardCentralController {
                 }
                 studentTable.setItems(students);
             }
+        } catch (SQLException e) {
+            de.showErrorDialog("Error", "An error occurred while fetching student information. Please try again.");
         }
 
     }
@@ -159,7 +165,10 @@ public class FacultySLController extends FacultyDashboardCentralController {
             com.siit.gradetracker.SiiTApp.setRoot("faculty_grade_board");
         } catch (IOException e) {
             e.printStackTrace();
+            de.showErrorDialog("Error", "An error occurred while fetching student information. Please try again.");
+            return;
         }
+
     }
 
 }
