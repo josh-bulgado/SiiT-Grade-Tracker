@@ -63,53 +63,20 @@ public class StudentDashboardController implements Initializable {
     private void fetchInformation() {
         try (Connection conn = DatabaseConnection.getConnection()) {
             fetchStudentInformation(conn); // Fetch student basic information
-            System.out.println("invoke1");
             fetchStudentSemesters(conn); // Fetch available semesters
-            System.out.println("invoke2");
             fetchStudentCourses(conn); // Fetch all courses grouped by semester
-            System.out.println("invoke3");
-            // printCoursesBySemester();
             updateCumulativeGWA(); // Calculate cumulative GWA for all semesters
-            System.out.println("invoke4");
 
             String currentTerm = schoolYearTerm.getValue();
-            System.out.println(currentTerm);
             if (currentTerm != null) {
-                System.out.println("invoke5");
                 displayCoursesForSelectedSemester(currentTerm); // Display courses for the first semester
-                System.out.println("invoke6");
                 updateCurrentGWA(currentTerm); // Update GWA for the first semester
-                System.out.println("invoke7");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             studentNameTxt.setText("Error fetching student information");
         }
     }
-
-    // private void printCoursesBySemester() {
-    // double totalCredits = 0.0;
-    // int totalUnits = 0;
-    // for (Map.Entry<String, SemesterInfo> entry : coursesBySemester.entrySet()) {
-    // List<Course> courses = coursesByS;
-    // for (Course course : courses) {
-    // if (course.isIncludedInGWA()) {
-    // double courseGrade = course.getCourseGrade();
-    // int courseUnit = course.getCourseUnit();
-    // totalCredits += courseGrade * courseUnit;
-    // totalUnits += courseUnit;
-    // }
-    // }
-    // if (totalUnits > 0) {
-    // double currentGWA = totalCredits / totalUnits;
-    // termGWA.setText(String.format("%.2f", currentGWA));
-    // previousGWAs.add(currentGWA);
-    // updateCumulativeGWA();
-    // } else {
-    // termGWA.setText(NO_GRADES_TEXT);
-    // }
-    // }
-    // }
 
     private void fetchStudentInformation(Connection conn) throws SQLException {
         String query = "SELECT si.*, p.program_name FROM students.student_information si "
@@ -170,62 +137,6 @@ public class StudentDashboardController implements Initializable {
         }
     }
 
-    // private void fetchStudentCourses(Connection conn) throws SQLException {
-    // GradeComputation gradeCompute = new GradeComputation();
-    // String query = "SELECT c.*, CONCAT(sy.school_year_name, ' ', t.term_name) AS
-    // semester "
-    // + "FROM students.student_course sc "
-    // + "JOIN students.student_enrollment se ON sc.student_enrollment_id = se.id "
-    // + "JOIN students_student_information si ON se.student_id = si.id "
-    // + "JOIN sgpt.courses c ON sc.courses_id = c.id "
-    // + "JOIN sgpt.school_year sy ON se.year_id = sy.id "
-    // + "JOIN sgpt.terms t ON se.term_id = t.id "
-    // + "WHERE si.student_id = ? "
-    // + "ORDER BY sg.id ASC";
-
-    // // String query = "SELECT sg.prelims_grade, sg.midterm_grade,
-    // // sg.prefinals_grade, sg.finals_grade, "
-    // // + "c.course_description, c.included_in_gwa, c.course_unit,
-    // // CONCAT(sy.school_year_name, ' ', t.term_name) AS semester "
-    // // + "FROM students.student_grades sg "
-    // // + "JOIN students.student_course sc ON sg.student_courses_id = sc.id "
-    // // + "JOIN students.student_enrollment se ON sc.student_enrollment_id = se.id
-    // "
-    // // + "JOIN students.student_information si ON se.student_id = si.id "
-    // // + "JOIN sgpt.courses c ON sc.course_id = c.id "
-    // // + "JOIN sgpt.school_year sy ON se.year_id = sy.id "
-    // // + "JOIN sgpt.terms t ON se.term_id = t.id "
-    // // + "WHERE si.student_id = ? "
-    // // + "ORDER BY sg.id ASC";
-
-    // try (PreparedStatement stmt = conn.prepareStatement(query)) {
-    // stmt.setString(1, studentId);
-    // try (ResultSet rs = stmt.executeQuery()) {
-    // Map<String, List<Course>> tempCoursesBySemester = new HashMap<>();
-    // while (rs.next()) {
-    // String semester = rs.getString("semester");
-    // String courseDescription = rs.getString("course_description");
-    // int courseUnit = rs.getInt("course_unit");
-    // boolean isIncludedInGWA = rs.getBoolean("included_in_gwa");
-    // Double[] grades = {
-    // rs.getDouble("prelims_grade"),
-    // rs.getDouble("midterm_grade"),
-    // rs.getDouble("prefinals_grade"),
-    // rs.getDouble("finals_grade")
-    // };
-
-    // Double courseGrade = gradeCompute.computeCourseGrade(grades);
-
-    // Course course = new Course(courseDescription, grades, courseGrade,
-    // courseUnit, isIncludedInGWA);
-    // tempCoursesBySemester.computeIfAbsent(semester, k -> new
-    // ArrayList<>()).add(course);
-    // }
-
-    // calculateSemesterGWA(tempCoursesBySemester);
-    // }
-    // }
-    // }
     private void fetchStudentCourses(Connection conn) throws SQLException {
         GradeComputation gradeCompute = new GradeComputation();
         String query = "SELECT sg.prelims_grade, sg.midterm_grade, sg.prefinals_grade, sg.finals_grade, "
@@ -257,7 +168,6 @@ public class StudentDashboardController implements Initializable {
                             rs.getDouble("finals_grade")
                     };
 
-                    System.out.println(courseDescription);
                     double courseGrade = gradeCompute.computeCourseGrade(grades);
                     boolean isIncludedInGWA = rs.getBoolean("included_in_gwa");
                     Course course = new Course(courseCode, courseDescription, courseUnit, grades, courseGrade,
@@ -356,6 +266,7 @@ public class StudentDashboardController implements Initializable {
         }
     }
 
+    @FXML
     private StackPane loadCourseCard() {
         try {
             FXMLLoader loader = new FXMLLoader(

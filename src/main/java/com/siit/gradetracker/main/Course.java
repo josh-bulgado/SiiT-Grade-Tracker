@@ -18,18 +18,17 @@ public class Course {
     this.isIncludedInGWA = isIncludedInGWA;
   }
 
-  public Course(String courseCode, String courseDescription, int courseUnit, double[] grades) {
-    this.courseDescription = courseDescription;
-    this.grades = grades;
-    // this.courseGrade = courseGrade;
-    this.courseUnit = courseUnit;
-    // this.isIncludedInGWA = isIncludedInGWA;
-    this.courseCode = courseCode;
+  // Getters
+  public String getCourseCode() {
+    return courseCode;
   }
 
-  // Getters and Setters
   public String getCourseDescription() {
     return courseDescription;
+  }
+
+  public int getCourseUnit() {
+    return courseUnit;
   }
 
   public double[] getGrades() {
@@ -40,15 +39,8 @@ public class Course {
     return courseGrade;
   }
 
-  public int getCourseUnit() {
-    return courseUnit;
-  }
-
   public boolean isIncludedInGWA() {
     return isIncludedInGWA;
   }
 
-  public String getCourseCode() {
-    return courseCode;
-  }
 }

@@ -98,6 +98,7 @@ public class GradeBoardController extends FacultySLController {
     }
 
     private void fetchStudentCourse(Connection conn) {
+        GradeComputation gradeCompute = new GradeComputation();
         String query = "SELECT sg.prelims_grade, sg.midterm_grade, sg.prefinals_grade, sg.finals_grade, "
                 + "c.*, CONCAT(sy.school_year_name, ' ', t.term_name) AS semester "
                 + "FROM students.student_grades sg "
@@ -127,7 +128,10 @@ public class GradeBoardController extends FacultySLController {
                             rs.getDouble("finals_grade")
                     };
 
-                    Course course = new Course(courseCode, courseDescription, courseUnit, grades);
+                    double courseGrade = gradeCompute.computeCourseGrade(grades);
+                    boolean isIncludedInGWA = rs.getBoolean("included_in_gwa");
+
+                    Course course = new Course(courseCode, courseDescription, courseUnit, grades, courseGrade, isIncludedInGWA);
                     coursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
                 }
             }

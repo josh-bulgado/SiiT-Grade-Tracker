@@ -206,7 +206,7 @@
                <children>
                   <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1">
                     <buttons>
-                      <Button fx:id="print_btn" mnemonicParsing="false" style="-fx-background-color: #e2e2e2;" text="PRINT">
+                      <Button fx:id="archive_btn" mnemonicParsing="false" style="-fx-background-color: #e2e2e2;" text="ARCHIVE">
                            <font>
                               <Font name="Helvetica Neue Bold" size="16.0" />
                            </font>

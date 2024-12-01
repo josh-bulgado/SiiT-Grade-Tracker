@@ -136,7 +136,6 @@ public class FacultySLController extends FacultyDashboardCentralController {
     // This method is called when a user selects a new program from the ComboBox
     private void updateStudentTableForSelectedProgram(String selectedProgram) {
         if (selectedProgram != null) {
-            System.out.println("Updating for program: " + selectedProgram);
             try (Connection conn = DatabaseConnection.getConnection()) {
                 // Fetch the programId corresponding to the selected program acronym
                 String query = "SELECT id FROM sgpt.program WHERE program_acronym = ?";
