@@ -12,13 +12,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="coursePane" maxHeight="220.0" minHeight="160.0" style="-fx-background-radius: 20px; -fx-background-color: white;" stylesheets="@../../../styles/student_courses_card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.students.StudentCCController">
+<StackPane fx:id="courseStackPane" maxHeight="220.0" minHeight="160.0" style="-fx-background-radius: 20px; -fx-background-color: white;" stylesheets="@../../../styles/student_courses_card.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.students.StudentCCController">
    <children>
       <BorderPane maxWidth="1.7976931348623157E308" prefWidth="563.0" style="-fx-background-radius: 20px;">
          <top>
             <StackPane alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #074072; -fx-background-radius: 20px 20px 0 0;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="courseName" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Description" StackPane.alignment="CENTER_LEFT">
+                  <Text fx:id="courseDescriptionText" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Description" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
                         <Insets left="15.0" />
                      </StackPane.margin>
@@ -53,7 +53,7 @@
                               </StackPane>
                               <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="29.5" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="prelims_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="prelimGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -78,7 +78,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="midterm_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="midtermGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -103,7 +103,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text id="grades" fx:id="prefinal_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text id="grades" fx:id="preFinalGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -128,7 +128,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="final_grade" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="finalGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -146,7 +146,7 @@
             </VBox>
          </center>
          <bottom>
-            <GridPane fx:id="courseGradePane" alignment="CENTER_LEFT" BorderPane.alignment="CENTER_RIGHT">
+            <GridPane fx:id="courseGradeGridPane" alignment="CENTER_LEFT" BorderPane.alignment="CENTER_RIGHT">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -162,7 +162,7 @@
                   </Text>
                   <StackPane maxWidth="-Infinity" prefHeight="150.0" prefWidth="115.0" style="-fx-background-color: #074072;" styleClass="radius" GridPane.columnIndex="1">
                      <children>
-                        <Text fx:id="courseGradeTxt" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                        <Text fx:id="courseGradeText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
                            <font>
                               <Font name="Helvetica Neue Bold" size="16.0" />
                            </font>

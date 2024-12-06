@@ -1,8 +1,10 @@
+com/siit/gradetracker/util/TextFieldUtils.class
 com/siit/gradetracker/main/SemesterInfo.class
 com/siit/gradetracker/SplashScreenController$1.class
 com/siit/gradetracker/SiiTApp$SplashScreen.class
 com/siit/gradetracker/SplashScreenController.class
 com/siit/gradetracker/SiiTApp.class
+com/siit/gradetracker/util/DisplayError.class
 com/siit/gradetracker/faculty/FacultyDashboardCentralController.class
 com/siit/gradetracker/students/StudentDashboardController.class
 com/siit/gradetracker/students/StudentInformation.class

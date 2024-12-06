@@ -13,7 +13,7 @@ public class StudentCourseTabController implements Initializable {
 
     private static String courseCode, courseDescription;
     private static int courseUnit;
-    private static double[] grades = new double[4];
+    private static Double[] grades = new Double[4];
 
     @FXML
     private Text course_code, course_description, course_unit;
@@ -24,10 +24,10 @@ public class StudentCourseTabController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         updateCourseInformation();
-        updateCourseGrade();
+        updatePeriodGrade();
     }
 
-    public static void setCourse(String courseCode, String courseDescription, int courseUnit, double[] grades) {
+    public static void setCourse(String courseCode, String courseDescription, int courseUnit, Double[] grades) {
         StudentCourseTabController.courseCode = courseCode;
         StudentCourseTabController.courseDescription = courseDescription;
         StudentCourseTabController.courseUnit = courseUnit;
@@ -40,12 +40,16 @@ public class StudentCourseTabController implements Initializable {
         course_unit.setText(Integer.toString(courseUnit));
     }
 
-    private void updateCourseGrade() {
-        prelim_grade.setText(Double.toString(grades[0]));
-        midterm_grade.setText(Double.toString(grades[1]));
-        prefinal_grade.setText(Double.toString(grades[2]));
-        final_grade.setText(Double.toString(grades[3]));
-    }
+   private void updatePeriodGrade() {
+    prelim_grade.setText(doubleToString(grades[0]));
+    midterm_grade.setText(doubleToString(grades[1]));
+    prefinal_grade.setText(doubleToString(grades[2]));
+    final_grade.setText(doubleToString(grades[3]));
+}
+
+private String doubleToString(Double value) {
+    return value != null ? Double.toString(value) : "";
+}
 
     // private String formatGrade(Double grade) {
     // return (grade == grade.intValue()) ? String.format("%d", grade.intValue()) :

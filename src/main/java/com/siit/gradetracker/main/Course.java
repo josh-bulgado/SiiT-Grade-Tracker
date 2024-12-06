@@ -2,14 +2,15 @@ package com.siit.gradetracker.main;
 
 public class Course {
   private String courseDescription;
-  private double[] grades;
+  private Double[] grades;
   private Double courseGrade;
   private int courseUnit;
   private boolean isIncludedInGWA;
   private String courseCode;
+  private int gradeId;
 
   // Constructor
-  public Course(String courseCode, String courseDescription, int courseUnit, double[] grades, Double courseGrade,
+  public Course(String courseCode, String courseDescription, int courseUnit, Double[] grades, Double courseGrade,
       boolean isIncludedInGWA) {
     this.courseCode = courseCode;
     this.courseDescription = courseDescription;
@@ -19,7 +20,23 @@ public class Course {
     this.isIncludedInGWA = isIncludedInGWA;
   }
 
+  public Course(int gradeId, String courseCode, String courseDescription, int courseUnit, Double[] grades,
+      Double courseGrade, boolean isIncludedInGWA) {
+    this.gradeId = gradeId;
+    this.courseCode = courseCode;
+    this.courseDescription = courseDescription;
+    this.courseUnit = courseUnit;
+    this.grades = grades;
+    this.courseGrade = courseGrade;
+    this.isIncludedInGWA = isIncludedInGWA;
+  }
+
   // Getters
+
+  public int getGradeId() {
+    return gradeId;
+  }
+
   public String getCourseCode() {
     return courseCode;
   }
@@ -32,7 +49,7 @@ public class Course {
     return courseUnit;
   }
 
-  public double[] getGrades() {
+  public Double[] getGrades() {
     return grades;
   }
 

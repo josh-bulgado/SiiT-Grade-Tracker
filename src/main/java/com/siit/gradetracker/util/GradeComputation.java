@@ -31,12 +31,12 @@ public class GradeComputation {
    * @param grades An array of grades: [prelims, midterm, prefinal, finals]
    * @return The computed course grade
    */
-  public double computeCourseGrade(double[] grades) {
-    // Calculate weighted score for each grading period
-    Double prelimsPS = grades[0] * 0.2;
-    Double midtermPS = grades[1] * 0.2;
-    Double prefinalPS = grades[2] * 0.2;
-    Double finalPS = grades[3] * 0.4;
+  public double computeCourseGrade(Double[] grades) {
+    // Calculate weighted score for each grading period, treating null as 0.0
+    Double prelimsPS = (grades[0] != null ? grades[0] : 0.0) * 0.2;
+    Double midtermPS = (grades[1] != null ? grades[1] : 0.0) * 0.2;
+    Double prefinalPS = (grades[2] != null ? grades[2] : 0.0) * 0.2;
+    Double finalPS = (grades[3] != null ? grades[3] : 0.0) * 0.4;
 
     Double courseScore = prelimsPS + midtermPS + prefinalPS + finalPS;
 
@@ -57,28 +57,29 @@ public class GradeComputation {
     return (entry != null) ? entry.getValue() : 5.00;
   }
 
-  public void calculateSemesterGWA(Map<String, SemesterInfo> coursesBySemester, Map<String, List<Course>> tempCoursesBySemester) {
-        for (Map.Entry<String, List<Course>> entry : tempCoursesBySemester.entrySet()) {
-            String semester = entry.getKey();
-            List<Course> courses = entry.getValue();
+  public void calculateSemesterGWA(Map<String, SemesterInfo> coursesBySemester,
+      Map<String, List<Course>> tempCoursesBySemester) {
+    for (Map.Entry<String, List<Course>> entry : tempCoursesBySemester.entrySet()) {
+      String semester = entry.getKey();
+      List<Course> courses = entry.getValue();
 
-            // Calculate the GWA for the semester
-            double totalUnits = 0;
-            double totalCredits = 0;
-            int overAllUnits = 0;
+      // Calculate the GWA for the semester
+      double totalUnits = 0;
+      double totalCredits = 0;
+      int overAllUnits = 0;
 
-            for (Course course : courses) {
-                overAllUnits += course.getCourseUnit();
-                if (course.isIncludedInGWA()) {
-                    totalUnits += course.getCourseUnit();
-                    totalCredits += course.getCourseGrade() * course.getCourseUnit();
-                }
-            }
-
-            double gwa = totalUnits > 0 ? totalCredits / totalUnits : 0.0;
-
-            // Store the SemesterInfo (list of courses and calculated GWA) in the map
-            coursesBySemester.put(semester, new SemesterInfo(courses, gwa, overAllUnits));
+      for (Course course : courses) {
+        overAllUnits += course.getCourseUnit();
+        if (course.isIncludedInGWA()) {
+          totalUnits += course.getCourseUnit();
+          totalCredits += course.getCourseGrade() * course.getCourseUnit();
         }
+      }
+
+      double gwa = totalUnits > 0 ? totalCredits / totalUnits : 0.0;
+
+      // Store the SemesterInfo (list of courses and calculated GWA) in the map
+      coursesBySemester.put(semester, new SemesterInfo(courses, gwa, overAllUnits));
     }
+  }
 }

@@ -245,12 +245,12 @@
                   </VBox>
                   <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                     <buttons>
-                      <Button fx:id="archive_btn" mnemonicParsing="false" style="-fx-background-color: #e2e2e2;" text="ARCHIVE">
+                      <Button fx:id="archiveCancelBtn" mnemonicParsing="false" onAction="#handleArchiveCancelButton" style="-fx-background-color: #e2e2e2;" text="ARCHIVE">
                            <font>
                               <Font name="Helvetica Neue Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="updateSaveBtn" mnemonicParsing="false" onAction="#handleUpdateSaveButton" style="-fx-background-color: #074072;" text="UDPATE" textFill="WHITE">
+                        <Button fx:id="updateSaveBtn" mnemonicParsing="false" onAction="#handleUpdateSaveButton" style="-fx-background-color: #074072;" text="UPDATE" textFill="WHITE">
                            <font>
                               <Font name="Helvetica Neue Bold" size="16.0" />
                            </font>

@@ -3,6 +3,11 @@
  */
 
 .mainFxmlClass {
+	-fx-font-family: "Inter", sans-serif;
+}
+
+.root {
+	-fx-font-family: "Inter", sans-serif;
 }
 
 .button:hover {

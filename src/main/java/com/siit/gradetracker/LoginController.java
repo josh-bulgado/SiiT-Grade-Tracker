@@ -89,24 +89,21 @@ public class LoginController implements Initializable {
     }
 
     private String fetchStudentId(String emailAddress) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
 
-        try {
-            conn = DatabaseConnection.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection()) {
 
             String query = "SELECT si.student_id "
                     + "FROM auth.student_login sl "
                     + "JOIN students.student_information si ON sl.student_id = si.id "
                     + "WHERE sl.email_address = ?";
 
-            stmt = conn.prepareStatement(query);
-            stmt.setString(1, emailAddress);
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return rs.getString("student_id");
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, emailAddress);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getString("student_id");
+                    }
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

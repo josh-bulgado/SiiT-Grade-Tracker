@@ -29,17 +29,29 @@
          <children>
             <Button mnemonicParsing="false" onAction="#logoutStudent" stylesheets="@../../../styles/student_dashboard.css" text="Log Out" textFill="#074072" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                <font>
-                  <Font name="Helvetica Neue Bold" size="18.0" />
+                  <Font name="Helvetica Neue Bold" size="16.0" />
                </font>
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Grades and Performance Tracker">
-               <font>
-                  <Font name="Helvetica Neue Bold" size="20.0" />
-               </font>
-            </Text>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Grades and Performance Tracker">
+                     <font>
+                        <Font name="Helvetica Neue Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Student" textOrigin="BOTTOM">
+                     <font>
+                        <Font name="Helvetica Neue Light Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="9.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
          </children>
          <padding>
             <Insets left="30.0" right="30.0" />
@@ -80,48 +92,51 @@
                                  <children>
                                     <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Text fx:id="studentAchievementTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Academic Excellence" />
-                                          <Text fx:id="studentNameTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Name">
+                                          <Text fx:id="studentAchievementTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Academic Excellence">
                                              <font>
-                                                <Font name="Helvetica Neue Bold" size="44.0" />
+                                                <Font size="12.0" />
+                                             </font></Text>
+                                          <Text fx:id="studentNameText" boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Name">
+                                             <font>
+                                                <Font name="Helvetica Neue Bold" size="49.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="studentIdTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's ID">
+                                          <Text fx:id="studentIdText" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's ID">
                                              <font>
-                                                <Font name="Helvetica Neue Medium Italic" size="20.0" />
+                                                <Font name="Helvetica Neue Medium Italic" size="21.0" />
                                              </font>
                                           </Text>
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                                        <children>
-                                          <Text fx:id="programTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's College Program">
+                                          <Text fx:id="programText" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's College Program">
                                              <font>
-                                                <Font name="Helvetica Neue Medium" size="30.0" />
+                                                <Font name="Helvetica Neue Medium" size="27.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="schoolNameTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's School/University">
+                                          <Text fx:id="schoolNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's School/University">
                                              <font>
-                                                <Font name="Helvetica Neue" size="20.0" />
+                                                <Font name="Helvetica Neue" size="21.0" />
                                              </font>
                                           </Text>
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                                        <children>
-                                          <Text fx:id="emailAddressTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Email Address">
+                                          <Text fx:id="emailAddressText" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Email Address">
                                              <font>
-                                                <Font name="Helvetica Neue" size="20.0" />
+                                                <Font name="Helvetica Neue" size="16.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="phoneNumberTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Phone Number">
+                                          <Text fx:id="phoneNumberText" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Phone Number">
                                              <font>
-                                                <Font name="Helvetica Neue" size="20.0" />
+                                                <Font name="Helvetica Neue" size="16.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="birthdateTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Birthdate">
+                                          <Text fx:id="birthdateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Student's Birthdate">
                                              <font>
-                                                <Font name="Helvetica Neue" size="20.0" />
+                                                <Font name="Helvetica Neue" size="16.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -137,15 +152,15 @@
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cumulative GWA">
                                  <font>
-                                    <Font name="Helvetica Neue Italic" size="28.0" />
+                                    <Font name="Helvetica Neue Italic" size="27.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets bottom="30.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="cumulativeGWATxt" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                              <Text fx:id="cumulativeGWAText" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
                                  <font>
-                                    <Font name="Helvetica Neue Bold" size="128.0" />
+                                    <Font name="Helvetica Neue Bold" size="80.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets bottom="10.0" />
@@ -186,7 +201,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Text>
-                              <ChoiceBox fx:id="schoolYearTerm" prefWidth="300.0" />
+                              <ChoiceBox fx:id="semesterChoiceBox" prefWidth="300.0" />
                            </children>
                            <padding>
                               <Insets right="30.0" />
@@ -202,9 +217,9 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Text>
-                              <Text fx:id="termGWA" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                              <Text fx:id="termGWAText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
                                  <font>
-                                    <Font name="System Bold" size="24.0" />
+                                    <Font name="System Bold" size="21.0" />
                                  </font>
                               </Text>
                            </children>
@@ -214,7 +229,7 @@
                         <Insets left="30.0" right="30.0" />
                      </padding>
                   </GridPane>
-                  <TilePane fx:id="coursesPane" alignment="CENTER_LEFT" focusTraversable="true" hgap="19.5" prefColumns="2" prefRows="4" prefTileWidth="563.0" vgap="20.0">
+                  <TilePane fx:id="coursesTilePane" alignment="CENTER_LEFT" focusTraversable="true" hgap="19.5" prefColumns="2" prefRows="4" prefTileWidth="563.0" vgap="20.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>

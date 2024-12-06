@@ -1,39 +1,44 @@
 /*
  * Empty Stylesheet file.
  */
-
+.root {
+	-fx-font-family: "Inter", sans-serif;
+}
 .mainFxmlClass {
-
+	-fx-font-family: "Inter", sans-serif;
 }
 /* Basic button styling */
 .button {
-    -fx-background-color: transparent;
-    -fx-transition: background-color 0.3s ease-in-out;
+	-fx-background-color: transparent;
+	-fx-transition: background-color 0.3s ease-in-out;
 }
 
 .button:hover {
-    -fx-background-color: white;
-    -fx-fill: #074072; 
-    -fx-cursor: hand;
+	-fx-background-color: white;
+	-fx-fill: #074072;
+	-fx-cursor: hand;
 }
-
 
 .button:hover .svg,
 .button:active .svg {
-    -fx-fill: #074072;  
+	-fx-fill: #074072;
 }
 
 .button.active,
 .button.active .svg {
-    -fx-background-color: white;
-    -fx-fill: #074072;  
+	-fx-background-color: white;
+	-fx-fill: #074072;
 }
 
 .svg {
-    -fx-fill: white;
+	-fx-fill: white;
 }
 
 .overview {
-    -fx-background-color: linear-gradient(to top left, white 0%, #A0C4D9 30%, #074072 100%);
+	-fx-background-color: linear-gradient(
+		to top left,
+		white 0%,
+		#a0c4d9 30%,
+		#074072 100%
+	);
 }
-

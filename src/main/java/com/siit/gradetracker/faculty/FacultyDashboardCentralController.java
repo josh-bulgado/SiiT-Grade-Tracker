@@ -8,36 +8,41 @@ import com.siit.gradetracker.SiiTApp;
 
 import javafx.fxml.*;
 
-public class FacultyDashboardCentralController implements Initializable {
+public abstract class FacultyDashboardCentralController implements Initializable {
 
     protected static int programId;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
+
+    protected abstract void fetchInformation();
 
     public static void setProgramId(int programId) {
         FacultyDashboardCentralController.programId = programId;
     }
 
+    public int getProgramId() {
+        return programId;
+    }
+
     @FXML
-    private void backBtn() throws IOException {
+    protected void backBtn() throws IOException {
         SiiTApp.setRoot("login");
     }
 
     @FXML
-    private void toHome() throws IOException {
+    protected void toHome() throws IOException {
         SiiTApp.setRoot("faculty_dashboard");
     }
 
     @FXML
-    private void toStudentList() throws IOException {
+    protected void toStudentList() throws IOException {
         SiiTApp.setRoot("faculty_student_list");
     }
 
     @FXML
-    private void toArchive() throws IOException {
+    protected void toArchive() throws IOException {
         SiiTApp.setRoot("faculty_archive");
     }
 }

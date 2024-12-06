@@ -13,8 +13,14 @@ public class TextFieldUtils {
 
   public static void makeTextFieldDouble(TextField textField) {
     textField.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!newValue.matches("\\d*\\.?\\d*")) {
-        textField.setText(newValue.replaceAll("[^\\d.]", ""));
+      try {
+        if (!newValue.matches("\\d*\\.?\\d*")) {
+          textField.setText(oldValue);
+        } else if (!newValue.isEmpty() && Double.parseDouble(newValue) > 100) {
+          textField.setText(oldValue);
+        }
+      } catch (NumberFormatException e) {
+        textField.setText(oldValue);
       }
     });
   }

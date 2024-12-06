@@ -1,4 +1,10 @@
+.mainFxmlClass {
+	/* -fx-font-family: "Inter", sans-serif; */
+}
 
+.root {
+	/* -fx-font-family: "Inter", sans-serif; */
+}
 
 .combo-box .arrow {
 	-fx-background-color: #074072;
@@ -12,17 +18,8 @@
 	-fx-border-color: #074072;
 }
 
-.table-view {
-	-fx-background-radius: 20px;
-	-fx-background-color: white;
-}
-
 .table-view .column-header {
 	-fx-background-color: #074072;
-}
-
-.table-view .column-header {
-	-fx-background-radius: 20px 20px 0 0;
 }
 
 .table-view .column-header .label {
@@ -31,6 +28,16 @@
 
 .table-view .column-header .arrow {
 	-fx-background-color: white;
+}
+
+.table-view {
+	-fx-background-radius: 20px;
+	-fx-background-color: white;
+}
+
+.table-view .table-cell {
+	-fx-alignment: center;
+	-fx-font-size: 16px;
 }
 
 .button {

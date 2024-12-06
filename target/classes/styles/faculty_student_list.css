@@ -1,4 +1,5 @@
 .mainFxmlClass {
+	/* -fx-font-family: "Inter", sans-serif; */
 }
 
 .combo-box .arrow {
@@ -15,10 +16,6 @@
 
 .table-view .column-header {
 	-fx-background-color: #074072;
-}
-
-.table-view .column-header {
-	-fx-background-radius: 20px 20px 0 0;
 }
 
 .table-view .column-header .label {

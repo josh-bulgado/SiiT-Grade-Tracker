@@ -6,12 +6,14 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javafx.fxml.*;
-import javafx.scene.text.Text;
+
 import com.siit.gradetracker.SiiTApp;
 import com.siit.gradetracker.main.Course;
 import com.siit.gradetracker.main.DatabaseConnection;
 import com.siit.gradetracker.main.SemesterInfo;
 import com.siit.gradetracker.util.GradeComputation;
+
+import javafx.scene.text.Text;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.*;
 
@@ -21,22 +23,20 @@ public class StudentDashboardController implements Initializable {
     private static final String NO_GRADES_TEXT = "0.00";
 
     private static String studentId;
-    private List<Double> courseGrades = new ArrayList<>();
-    private List<Double> previousGWAs = new ArrayList<>();
     private Map<String, SemesterInfo> coursesBySemester = new HashMap<>();
 
     @FXML
-    private Text studentIdTxt, studentNameTxt, programTxt, schoolNameTxt, emailAddressTxt, phoneNumberTxt, birthdateTxt,
-            termGWA, cumulativeGWATxt;
+    private Text studentIdText, studentNameText, programText, schoolNameText, emailAddressText, phoneNumberText,
+            birthdateText, termGWAText, cumulativeGWAText;
 
     @FXML
-    private TilePane coursesPane;
+    private TilePane coursesTilePane;
 
     @FXML
-    private StackPane courseCard;
+    private StackPane courseStackPane;
 
     @FXML
-    private ChoiceBox<String> schoolYearTerm;
+    private ChoiceBox<String> semesterChoiceBox;
 
     public static void setStudentId(String studentId) {
         StudentDashboardController.studentId = studentId;
@@ -45,17 +45,16 @@ public class StudentDashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (studentId != null) {
-            studentIdTxt.setText(studentId);
+            studentIdText.setText(studentId);
         }
         fetchInformation();
 
         // Listener for when a semester is selected to display corresponding courses and
         // GWA
-        schoolYearTerm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        semesterChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 displayCoursesForSelectedSemester(newValue);
                 displaySemesterGWA(newValue);
-                // updateCurrentGWA(newValue);
             }
         });
     }
@@ -67,14 +66,14 @@ public class StudentDashboardController implements Initializable {
             fetchStudentCourses(conn); // Fetch all courses grouped by semester
             updateCumulativeGWA(); // Calculate cumulative GWA for all semesters
 
-            String currentTerm = schoolYearTerm.getValue();
+            String currentTerm = semesterChoiceBox.getValue();
             if (currentTerm != null) {
                 displayCoursesForSelectedSemester(currentTerm); // Display courses for the first semester
                 updateCurrentGWA(currentTerm); // Update GWA for the first semester
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            studentNameTxt.setText("Error fetching student information");
+            studentNameText.setText("Error fetching student information");
         }
     }
 
@@ -86,14 +85,14 @@ public class StudentDashboardController implements Initializable {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     String fullName = buildFullName(rs);
-                    studentNameTxt.setText(fullName);
-                    programTxt.setText(rs.getString("program_name"));
-                    schoolNameTxt.setText(DEFAULT_SCHOOL_NAME);
-                    emailAddressTxt.setText(rs.getString("email_address"));
-                    phoneNumberTxt.setText(rs.getString("contact_number"));
-                    birthdateTxt.setText(new SimpleDateFormat("MMMM dd, yyyy").format(rs.getDate("birthdate")));
+                    studentNameText.setText(fullName);
+                    programText.setText(rs.getString("program_name"));
+                    schoolNameText.setText(DEFAULT_SCHOOL_NAME);
+                    emailAddressText.setText(rs.getString("email_address"));
+                    phoneNumberText.setText(rs.getString("contact_number"));
+                    birthdateText.setText(new SimpleDateFormat("MMMM dd, yyyy").format(rs.getDate("birthdate")));
                 } else {
-                    studentNameTxt.setText("Student not found");
+                    studentNameText.setText("Student not found");
                 }
             }
         }
@@ -127,11 +126,11 @@ public class StudentDashboardController implements Initializable {
                 Collections.reverse(semesters);
 
                 for (String semester : semesters) {
-                    schoolYearTerm.getItems().addAll(semester);
+                    semesterChoiceBox.getItems().addAll(semester);
                 }
 
-                if (!schoolYearTerm.getItems().isEmpty()) {
-                    schoolYearTerm.setValue(semesters.get(0)); // Set the first semester by default
+                if (!semesterChoiceBox.getItems().isEmpty()) {
+                    semesterChoiceBox.setValue(semesters.get(0)); // Set the first semester by default
                 }
             }
         }
@@ -153,7 +152,9 @@ public class StudentDashboardController implements Initializable {
 
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, studentId);
+
             try (ResultSet rs = stmt.executeQuery()) {
+
                 Map<String, List<Course>> tempCoursesBySemester = new HashMap<>();
                 while (rs.next()) {
                     String semester = rs.getString("semester");
@@ -161,65 +162,41 @@ public class StudentDashboardController implements Initializable {
                     String courseDescription = rs.getString("course_description");
                     int courseUnit = rs.getInt("course_unit");
 
-                    double[] grades = {
+                    Double[] grades = {
                             rs.getDouble("prelims_grade"),
                             rs.getDouble("midterm_grade"),
                             rs.getDouble("prefinals_grade"),
                             rs.getDouble("finals_grade")
                     };
 
-                    double courseGrade = gradeCompute.computeCourseGrade(grades);
+                    Double courseGrade = gradeCompute.computeCourseGrade(grades);
                     boolean isIncludedInGWA = rs.getBoolean("included_in_gwa");
                     Course course = new Course(courseCode, courseDescription, courseUnit, grades, courseGrade,
                             isIncludedInGWA);
                     tempCoursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
                 }
 
-                calculateSemesterGWA(tempCoursesBySemester);
+                // calculateSemesterGWA(tempCoursesBySemester);
+                gradeCompute.calculateSemesterGWA(coursesBySemester, tempCoursesBySemester);
             }
-        }
-    }
-
-    private void calculateSemesterGWA(Map<String, List<Course>> tempCoursesBySemester) {
-        for (Map.Entry<String, List<Course>> entry : tempCoursesBySemester.entrySet()) {
-            String semester = entry.getKey();
-            List<Course> courses = entry.getValue();
-
-            // Calculate the GWA for the semester
-            double totalUnits = 0;
-            double totalCredits = 0;
-            int overAllUnits = 0;
-
-            for (Course course : courses) {
-                overAllUnits += course.getCourseUnit();
-                if (course.isIncludedInGWA()) {
-                    totalUnits += course.getCourseUnit();
-                    totalCredits += course.getCourseGrade() * course.getCourseUnit();
-                }
-            }
-
-            double gwa = totalUnits > 0 ? totalCredits / totalUnits : 0.0;
-
-            // Store the SemesterInfo (list of courses and calculated GWA) in the map
-            coursesBySemester.put(semester, new SemesterInfo(courses, gwa, overAllUnits));
         }
     }
 
     private void displaySemesterGWA(String semester) {
-        termGWA.setText(String.format("%.2f", coursesBySemester.get(semester).getGwa()));
+        termGWAText.setText(String.format("%.2f", coursesBySemester.get(semester).getGwa()));
 
     }
 
     private void displayCoursesForSelectedSemester(String semester) {
-        coursesPane.getChildren().clear();
+        coursesTilePane.getChildren().clear();
         List<Course> courses = coursesBySemester.get(semester).getCourses();
 
         if (courses != null) {
             for (Course course : courses) {
-                StudentCCController.setCourseInformation(course.getCourseDescription(), course.getGrades(),
-                        course.getCourseGrade());
-                courseCard = loadCourseCard();
-                coursesPane.getChildren().add(courseCard);
+
+                courseStackPane = loadCourseCard(course);
+
+                coursesTilePane.getChildren().add(courseStackPane);
             }
         } else {
             System.out.println("No courses found for semester: " + semester);
@@ -243,12 +220,12 @@ public class StudentDashboardController implements Initializable {
 
             if (totalUnits > 0) {
                 double currentGWA = totalCredits / totalUnits;
-                termGWA.setText(String.format("%.2f", currentGWA));
+                termGWAText.setText(String.format("%.2f", currentGWA));
             } else {
-                termGWA.setText(NO_GRADES_TEXT);
+                termGWAText.setText(NO_GRADES_TEXT);
             }
         } else {
-            termGWA.setText(NO_GRADES_TEXT);
+            termGWAText.setText(NO_GRADES_TEXT);
         }
     }
 
@@ -261,19 +238,24 @@ public class StudentDashboardController implements Initializable {
 
         if (totalGWA != 0.0) {
             double cumulativeGWA = totalGWA / coursesBySemester.size();
-            cumulativeGWATxt.setText(String.format("%.2f", cumulativeGWA));
+            cumulativeGWAText.setText(String.format("%.2f", cumulativeGWA));
         } else {
-            cumulativeGWATxt.setText(NO_GRADES_TEXT);
+            cumulativeGWAText.setText(NO_GRADES_TEXT);
 
         }
     }
 
     @FXML
-    private StackPane loadCourseCard() {
+    private StackPane loadCourseCard(Course course) {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/siit/gradetracker/student_courses_card.fxml"));
-            return loader.load();
+            StackPane courseStackPane = loader.load();
+
+            StudentCCController controller = loader.getController();
+            controller.setCourse(course);
+
+            return courseStackPane;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -282,10 +264,8 @@ public class StudentDashboardController implements Initializable {
 
     @FXML
     private void logoutStudent() throws IOException {
-        courseGrades.clear();
-        previousGWAs.clear();
         coursesBySemester.clear();
-        termGWA.setText(NO_GRADES_TEXT);
+        termGWAText.setText(NO_GRADES_TEXT);
         SiiTApp.setRoot("login");
     }
 }
