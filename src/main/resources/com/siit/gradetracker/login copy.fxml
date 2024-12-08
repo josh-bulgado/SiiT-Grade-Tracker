@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../../../styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.LoginController">
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="832.0" fitWidth="1280.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/Frame%201-3.png" />
+               </image>
+            </ImageView>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="605.0" style="-fx-background-color: white; -fx-background-radius: 20px;" StackPane.alignment="CENTER_RIGHT">
+               <top>
+                  <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+                     <children>
+                        <Group scaleX="1.5" scaleY="1.5">
+                           <children>
+                              <SVGPath content="M127.695 1.56934L125.513 11.8171H111.894L104.026 48.6428H91.6625L99.5301 11.8171H85.4478L87.6295 1.56934H127.695Z" fill="#095793" />
+                              <SVGPath content="M51.899 12.08C53.1332 12.08 54.191 11.6834 55.0725 10.89C55.9541 10.0966 56.3948 9.01675 56.3948 7.65038C56.3948 6.19586 55.8659 4.98376 54.8081 4.01409C53.7502 3.04441 52.5602 2.55957 51.2379 2.55957C49.9597 2.55957 48.9018 2.97829 48.0644 3.81574C47.2269 4.60912 46.8082 5.64491 46.8082 6.92312C46.8082 8.33356 47.3371 9.54566 48.395 10.5594C49.4087 11.5732 50.5767 12.08 51.899 12.08ZM57.9816 49.633C59.3038 49.633 60.4058 49.3025 61.2873 48.6413C62.1247 47.9361 62.5435 46.9224 62.5435 45.6001C62.5435 44.8508 62.4553 43.9472 62.279 42.8894C62.1027 41.8315 61.9044 40.7517 61.684 39.6498L58.5766 24.7079C58.1799 22.8567 58.8631 21.6005 60.6261 20.9394L60.9729 20.7908C61.3167 20.6434 61.5235 20.2885 61.4822 19.9168C61.4443 19.5754 61.2042 19.2904 60.8741 19.1951L49.9868 16.0498C49.6981 15.9665 49.387 16.0466 49.1746 16.259C48.977 16.4566 48.8929 16.7408 48.9511 17.014L53.8825 40.1787C54.0588 40.928 54.191 41.5891 54.2792 42.1621C54.3673 42.691 54.4114 43.1979 54.4114 43.6827C54.4114 44.6524 53.9706 45.1373 53.0891 45.1373C52.1318 45.1373 50.9038 44.4514 49.4051 43.0798C49.1343 42.832 48.7152 42.8335 48.4557 43.0931C48.2285 43.3203 48.1931 43.6776 48.3818 43.9377C49.4291 45.382 50.7117 46.6634 52.2296 47.7818C53.8604 49.016 55.7777 49.633 57.9816 49.633Z" fill="#e7bf1d" />
+                              <SVGPath content="M75.9179 12.08C74.6837 12.08 73.6259 11.6834 72.7444 10.89C71.8628 10.0966 71.4221 9.01675 71.4221 7.65038C71.4221 6.19586 71.951 4.98376 73.0088 4.01409C74.0667 3.04441 75.2567 2.55957 76.579 2.55957C77.8572 2.55957 78.915 2.97829 79.7525 3.81574C80.5899 4.60912 81.0087 5.64491 81.0087 6.92312C81.0087 8.33356 80.4798 9.54566 79.4219 10.5594C78.4082 11.5732 77.2402 12.08 75.9179 12.08ZM69.8353 49.633C68.513 49.633 67.4111 49.3025 66.5296 48.6413C65.6922 47.9361 65.2734 46.9224 65.2734 45.6001C65.2734 44.8508 65.3616 43.9472 65.5379 42.8894C65.7142 41.8315 65.9125 40.7517 66.1329 39.6498L69.2403 24.7079C69.637 22.8567 68.9538 21.6005 67.1908 20.9394L66.844 20.7908C66.5002 20.6434 66.2934 20.2885 66.3347 19.9168C66.3726 19.5754 66.6127 19.2904 66.9427 19.1951L77.8301 16.0498C78.1188 15.9665 78.4299 16.0466 78.6423 16.259C78.8399 16.4566 78.924 16.7408 78.8658 17.014L73.9344 40.1787C73.7581 40.928 73.6259 41.5891 73.5377 42.1621C73.4496 42.691 73.4055 43.1979 73.4055 43.6827C73.4055 44.6524 73.8463 45.1373 74.7278 45.1373C75.6851 45.1373 76.9131 44.4514 78.4118 43.0798C78.6826 42.832 79.1016 42.8335 79.3612 43.0931C79.5884 43.3203 79.6237 43.6776 79.4351 43.9377C78.3878 45.382 77.1052 46.6634 75.5873 47.7818C73.9565 49.016 72.0391 49.633 69.8353 49.633Z" fill="#e7bf1d" />
+                              <SVGPath content="M42.9457 15.7157L31.3756 15.7818C31.1112 13.6 30.45 12.0794 29.3922 11.1538C28.3344 10.2282 26.6154 9.83151 24.3014 9.83151C22.1857 9.83151 20.5329 10.2282 19.2767 11.0877C18.0205 11.9472 17.4255 13.0711 17.4255 14.5256C17.4255 14.8562 17.4255 15.1868 17.5577 15.5173C17.6238 15.8479 17.7561 16.1785 17.9544 16.443C18.2189 16.7074 18.4172 16.9058 18.5494 17.1041C18.7478 17.3024 19.0122 17.5008 19.4089 17.6991C19.8056 17.8975 20.0701 18.0297 20.3345 18.1619C20.5329 18.2942 20.8634 18.4264 21.3262 18.5586C21.8552 18.6908 22.1857 18.757 22.318 18.8231C22.4502 18.8892 22.7808 19.0214 23.3097 19.1536C23.8386 19.2859 24.1031 19.352 24.1692 19.352C25.8881 19.7487 27.2104 20.1454 28.2021 20.4759C29.1939 20.7404 30.3178 21.1371 31.6401 21.666C32.9624 22.1288 33.9541 22.5916 34.7475 23.0544C35.5408 23.5172 36.3342 24.1122 37.1937 24.8395C37.9871 25.5006 38.6482 26.294 39.0449 27.0874C39.4416 27.8807 39.8383 28.8725 40.1027 29.9964C40.3672 31.0542 40.4994 32.3104 40.4994 33.6988C40.4994 35.8806 40.1027 37.864 39.3094 39.7152C38.516 41.5664 37.4582 43.0871 36.1359 44.2771C34.8136 45.4672 33.293 46.4589 31.4418 47.3184C29.6567 48.1118 27.8055 48.7068 25.8881 49.1035C23.9047 49.4341 21.9213 49.6324 19.8717 49.6324C16.1693 49.6324 12.8636 49.1035 10.0868 48.1118C7.24387 47.1201 4.92986 45.4011 3.14477 42.9548C1.29357 40.5086 0.434082 37.4673 0.434082 33.831C0.434082 33.5005 0.434082 33.236 0.500196 32.9716H12.5991V33.0377C12.5991 37.9301 15.3759 40.3764 20.9296 40.3764C23.2436 40.3764 25.0948 39.8475 26.5493 38.9219C27.9377 37.9301 28.6649 36.6079 28.6649 35.0211C28.6649 34.2277 28.4666 33.5005 28.136 32.9716C27.8055 32.3765 27.2104 31.8476 26.4171 31.4509C25.5576 30.9881 24.7642 30.6576 24.0369 30.3931C23.2436 30.1286 22.1196 29.7981 20.6651 29.4014C19.1445 28.9386 17.8883 28.5419 16.8966 28.2113C13.2603 26.9551 10.4835 25.4345 8.56616 23.6494C6.58273 21.7982 5.65712 19.2198 5.65712 15.7818C5.65712 11.2199 7.3761 7.58361 10.814 4.80681C14.252 2.03 18.88 0.641602 24.5659 0.641602C30.5162 0.641602 35.078 1.89778 38.2515 4.41012C41.3589 6.92247 42.9457 10.4927 42.9457 15.1868V15.7157Z" fill="#095793" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </Group>
+                        <Text fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Information and Integrated Tracking">
+                           <font>
+                              <Font name="Helvetica Neue Light Italic" size="11.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="50.0" top="30.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </top>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+               <center>
+                  <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="200.0" prefWidth="371.0" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="100.0" prefWidth="100.0" spacing="20.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="emailAddressField" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" promptText="email@example.com" VBox.vgrow="ALWAYS">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label fx:id="emailAddressErrorLabel" text="Please enter a valid email address" textFill="#600700">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="10.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="2.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="passwordVisibleField" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" promptText="email@example.com">
+                                             <font>
+                                                <Font name="Helvetica Neue" size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <PasswordField fx:id="passwordField" maxHeight="35.0" minHeight="35.0" prefHeight="35.0" promptText="Password">
+                                             <font>
+                                                <Font name="Helvetica Neue" size="16.0" />
+                                             </font>
+                                          </PasswordField>
+                                          <Button fx:id="togglePasswordBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#togglePasswordVisibility" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" StackPane.alignment="CENTER_RIGHT">
+                                             <graphic>
+                                                <SVGPath content="M45.6667 24.1667C41.4583 14.3959 33.5417 8.33337 25 8.33337C16.4584 8.33337 8.54168 14.3959 4.33335 24.1667C4.21864 24.4296 4.15942 24.7133 4.15942 25C4.15942 25.2868 4.21864 25.5705 4.33335 25.8334C8.54168 35.6042 16.4584 41.6667 25 41.6667C33.5417 41.6667 41.4583 35.6042 45.6667 25.8334C45.7814 25.5705 45.8406 25.2868 45.8406 25C45.8406 24.7133 45.7814 24.4296 45.6667 24.1667ZM25 37.5C18.3958 37.5 12.1458 32.7292 8.54168 25C12.1458 17.2709 18.3958 12.5 25 12.5C31.6042 12.5 37.8542 17.2709 41.4583 25C37.8542 32.7292 31.6042 37.5 25 37.5ZM25 16.6667C23.3518 16.6667 21.7407 17.1554 20.3703 18.0711C18.9999 18.9868 17.9318 20.2883 17.301 21.811C16.6703 23.3337 16.5053 25.0093 16.8268 26.6258C17.1483 28.2423 17.942 29.7272 19.1075 30.8926C20.2729 32.058 21.7578 32.8517 23.3743 33.1733C24.9908 33.4948 26.6663 33.3298 28.189 32.699C29.7118 32.0683 31.0133 31.0002 31.9289 29.6298C32.8446 28.2594 33.3333 26.6482 33.3333 25C33.3333 22.7899 32.4554 20.6703 30.8926 19.1075C29.3298 17.5447 27.2102 16.6667 25 16.6667ZM25 29.1667C24.1759 29.1667 23.3703 28.9223 22.6851 28.4645C21.9999 28.0067 21.4659 27.3559 21.1505 26.5946C20.8352 25.8332 20.7526 24.9954 20.9134 24.1872C21.0742 23.3789 21.471 22.6365 22.0537 22.0538C22.6365 21.471 23.3789 21.0742 24.1871 20.9134C24.9954 20.7527 25.8332 20.8352 26.5945 21.1505C27.3559 21.4659 28.0066 22 28.4645 22.6852C28.9223 23.3704 29.1667 24.176 29.1667 25C29.1667 26.1051 28.7277 27.1649 27.9463 27.9463C27.1649 28.7277 26.1051 29.1667 25 29.1667Z" fill="#095793" scaleX="0.5" scaleY="0.5" />
+                                             </graphic>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" />
+                                             </StackPane.margin>
+                                          </Button>
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="passwordErrorLabel" text="The password you entered is incorrect" textFill="#600700">
+                                       <font>
+                                          <Font name="Helvetica Neue" size="10.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="2.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <Button fx:id="loginBtn" maxHeight="49.0" maxWidth="371.0" mnemonicParsing="false" onAction="#login" text="Log in" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="28.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </center>
+               <StackPane.margin>
+                  <Insets right="15.0" />
+               </StackPane.margin>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

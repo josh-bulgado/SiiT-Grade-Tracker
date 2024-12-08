@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,7 +15,7 @@
    <children>
       <BorderPane maxWidth="1.7976931348623157E308" prefWidth="563.0" style="-fx-background-radius: 20px;">
          <top>
-            <StackPane alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #074072; -fx-background-radius: 20px 20px 0 0;" BorderPane.alignment="CENTER">
+            <StackPane alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #095794; -fx-background-radius: 20px 20px 0 0;" BorderPane.alignment="CENTER">
                <children>
                   <Text fx:id="courseDescriptionText" boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Description" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
@@ -53,7 +52,7 @@
                               </StackPane>
                               <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="29.5" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="prelimGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="prelimGradeText" fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -78,7 +77,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="midtermGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="midtermGradeText" fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -103,7 +102,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text id="grades" fx:id="preFinalGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text id="grades" fx:id="preFinalGradeText" fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -128,7 +127,7 @@
                               </StackPane>
                               <StackPane maxHeight="29.5" minHeight="29.5" prefHeight="150.0" prefWidth="200.0" styleClass="lower-radius">
                                  <children>
-                                    <Text fx:id="finalGradeText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0">
+                                    <Text fx:id="finalGradeText" fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Helvetica Neue Bold" size="16.0" />
                                        </font>
@@ -155,12 +154,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Grade">
+                  <Text fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Grade">
                      <font>
                         <Font name="Helvetica Neue Medium" size="16.0" />
                      </font>
                   </Text>
-                  <StackPane maxWidth="-Infinity" prefHeight="150.0" prefWidth="115.0" style="-fx-background-color: #074072;" styleClass="radius" GridPane.columnIndex="1">
+                  <StackPane maxWidth="-Infinity" prefHeight="150.0" prefWidth="115.0" style="-fx-background-color: #095794;" styleClass="radius" GridPane.columnIndex="1">
                      <children>
                         <Text fx:id="courseGradeText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
                            <font>
@@ -177,7 +176,4 @@
          </bottom>
       </BorderPane>
    </children>
-   <effect>
-      <DropShadow blurType="GAUSSIAN" height="11.8" radius="2.45" width="0.0" />
-   </effect>
 </StackPane>

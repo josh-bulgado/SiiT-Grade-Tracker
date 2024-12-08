@@ -28,13 +28,12 @@ public class GradeBoardController extends FacultySLController {
     private static final String CURRENT_SEMESTER = "First Semester";
     String currentSemester = CURRENT_ACADEMIC_YEAR + " " + CURRENT_SEMESTER;
 
-    private List<String> semester = new ArrayList<>();
     private Map<String, SemesterInfo> coursesBySemester = new HashMap<>();
-    private boolean isUpdateMode = true;
-    // private List<TextField> textFields = new ArrayList<>();
-    private DisplayError de = new DisplayError();
     private Map<Integer, List<TextField>> courseTextFieldsMap = new HashMap<>();
     private Map<Integer, List<String>> originalTextFieldValuesMap = new HashMap<>();
+
+    private boolean isUpdateMode = true;
+    private DisplayError de = new DisplayError();
 
     @FXML
     private VBox course_section;
@@ -43,7 +42,7 @@ public class GradeBoardController extends FacultySLController {
     private HBox course_box;
 
     @FXML
-    private Button studentBtn, backBtn, updateSaveBtn, archiveCancelBtn;
+    private Button backBtn, updateSaveBtn, archiveCancelBtn;
 
     @FXML
     private TextField prelimTextField, midtermTextField, prefinalTextField, finalTextField;
@@ -53,7 +52,6 @@ public class GradeBoardController extends FacultySLController {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        studentBtn.getStyleClass().add("active");
 
         student_number.setText(studentId);
 
@@ -163,23 +161,6 @@ public class GradeBoardController extends FacultySLController {
         }
     }
 
-    private void fetchCurrentSemester(Connection conn) {
-        String query = "SELECT CONCAT(sy.school_year_name, ' ', t.term_name) as term "
-                + "FROM sgpt.school_year sy "
-                + "CROSS JOIN sgpt.terms t "
-                + "ORDER BY sy.id, t.id ";
-
-        try (PreparedStatement stmt = conn.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
-            while (rs.next()) {
-                String term = rs.getString("term");
-                semester.add(term);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     private void displayStudentCourse(String semester) {
         course_section.getChildren().clear();
 
@@ -213,10 +194,12 @@ public class GradeBoardController extends FacultySLController {
     @FXML
     private void handleUpdateSaveButton() {
         if (isUpdateMode) {
+
             updateStudentGrades();
             updateSaveBtn.setText("SAVE");
             archiveCancelBtn.setText("CANCEL");
         } else {
+
             saveGrades();
             updateSaveBtn.setText("UPDATE");
             archiveCancelBtn.setText("ARCHIVE");
@@ -227,6 +210,7 @@ public class GradeBoardController extends FacultySLController {
 
     @FXML
     private void updateStudentGrades() {
+        backBtn.setVisible(false);
 
         for (Node node : course_section.getChildren()) {
             if (node instanceof HBox) {
@@ -261,6 +245,7 @@ public class GradeBoardController extends FacultySLController {
 
     @FXML
     private void saveGrades() {
+        backBtn.setVisible(true);
         try (Connection conn = DatabaseConnection.getConnection()) {
             for (Course course : coursesBySemester.get(currentSemester).getCourses()) {
                 String updateQuery = "UPDATE students.student_grades SET "
@@ -315,6 +300,7 @@ public class GradeBoardController extends FacultySLController {
 
     @FXML
     private void cancelGradeUpdate() {
+        backBtn.setVisible(true);
         for (Node node : course_section.getChildren()) {
             if (node instanceof HBox) {
                 HBox courseCard = (HBox) node;
@@ -352,6 +338,7 @@ public class GradeBoardController extends FacultySLController {
 
         for (TextField field : textFields) {
             field.setEditable(isEditable);
+
             TextFieldUtils.makeTextFieldDouble(field);
             if (isEditable) {
                 field.getStyleClass().add("text-field-is-editable");
@@ -370,7 +357,7 @@ public class GradeBoardController extends FacultySLController {
         try {
             return Double.parseDouble(value);
         } catch (NumberFormatException e) {
-            return null; 
+            return null;
         }
     }
 

@@ -17,6 +17,7 @@ import javafx.scene.input.*;
 public class LoginController implements Initializable {
 
     private DisplayError de = new DisplayError();
+
     @FXML
     private TextField emailAddressField;
 
@@ -29,6 +30,9 @@ public class LoginController implements Initializable {
     @FXML
     private Button togglePasswordBtn;
 
+    @FXML
+    private Label emailAddressErrorLabel, passwordErrorLabel;
+
     private boolean isPasswordVisible = false;
 
     @FXML
@@ -36,10 +40,15 @@ public class LoginController implements Initializable {
         passwordVisibleField.textProperty().bindBidirectional(passwordField.textProperty());
         passwordField.setOnKeyPressed(this::handleKeyPressed);
         passwordVisibleField.setOnKeyPressed(this::handleKeyPressed);
+
+        emailAddressErrorLabel.setVisible(false);
+        passwordErrorLabel.setVisible(false);
     }
 
     @FXML
     private void login() {
+        emailAddressErrorLabel.setVisible(false);
+        passwordErrorLabel.setVisible(false);
         CheckCredentials cc = new CheckCredentials();
         String emailAddress = emailAddressField.getText();
         String password = passwordField.getText();
@@ -48,6 +57,7 @@ public class LoginController implements Initializable {
             String role = cc.checkCredentials(emailAddress, password);
             if (role.equals("student")) {
                 StudentDashboardController.setStudentId(fetchStudentId(emailAddress));
+                System.out.println("invoke");
                 SiiTApp.setRoot("student_dashboard");
             } else if (role.equals("faculty")) {
                 FacultyDashboardCentralController.setProgramId(fetchProgramId(emailAddress));
@@ -56,8 +66,14 @@ public class LoginController implements Initializable {
                 throw new IOException("Invalid email address or password");
             }
 
+        } catch (CheckCredentials.EmailNotFoundException enfe) {
+            emailAddressErrorLabel.setVisible(true);
+            // de.showErrorDialog("Error", enfe.getMessage());
+        } catch (CheckCredentials.IncorrectPasswordException ipe) {
+            passwordErrorLabel.setVisible(true);
+            // de.showErrorDialog("Error", ipe.getMessage());
         } catch (IOException ioe) {
-            System.out.println(ioe.getMessage());
+            ioe.printStackTrace();
             de.showErrorDialog("Error", ioe.getMessage());
         }
 

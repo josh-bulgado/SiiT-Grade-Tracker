@@ -1,9 +1,14 @@
 module com.siit.gradetracker {
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires javafx.fxml;
-    requires java.base;
+    requires org.kordamp.ikonli.core;
+    requires org.kordamp.ikonli.javafx;
+    // add icon pack modules
+    requires org.kordamp.ikonli.fontawesome5;
+    requires org.kordamp.ikonli.unicons;
+
     requires transitive java.sql;
-    requires transitive javafx.graphics;
+    requires javafx.graphics;
 
     opens com.siit.gradetracker to javafx.fxml;
     opens com.siit.gradetracker.main to javafx.fxml;

@@ -7,12 +7,12 @@
 
 .upper-radius {
 	-fx-background-radius: 6px 6px 0 0;
-	-fx-background-color: #074072;
+	-fx-background-color: #095794;
 }
 
 .lower-radius {
 	-fx-background-radius: 0 0 6px 6px;
-	-fx-background-color: #f0f1f1;
+	-fx-background-color: #ebeced;
 }
 
 .radius {

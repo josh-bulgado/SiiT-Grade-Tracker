@@ -7,7 +7,7 @@
 
 .text-field {
 	-fx-background-color: #ffffff;
-	/* -fx-border-color: #074072; */
+	/* -fx-border-color: #095794; */
 }
 
 .text-field.active {
@@ -15,7 +15,7 @@
 
 .text-field-is-editable {
 	-fx-background-color: #ffffff;
-	-fx-border-color: #074072;
+	-fx-border-color: #095794;
 }
 
 .text-field-is-not-editable {

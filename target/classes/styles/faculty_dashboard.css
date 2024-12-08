@@ -15,23 +15,23 @@
 
 .button:hover {
 	-fx-background-color: white;
-	-fx-fill: #074072;
+	-fx-icon-color: #095794;
 	-fx-cursor: hand;
 }
 
-.button:hover .svg,
-.button:active .svg {
-	-fx-fill: #074072;
+.button:hover .font-icon,
+.button:active .font-icon {
+	-fx-icon-color: #095794;
 }
 
 .button.active,
-.button.active .svg {
+.button.active .font-icon {
 	-fx-background-color: white;
-	-fx-fill: #074072;
+	-fx-icon-color: #095794;
 }
 
-.svg {
-	-fx-fill: white;
+.font-icon {
+	-fx-icon-color: white;
 }
 
 .overview {
@@ -39,6 +39,10 @@
 		to top left,
 		white 0%,
 		#a0c4d9 30%,
-		#074072 100%
+		#095794 100%
 	);
+}
+
+.left {
+	padding: 15px 10px 15px 10px;
 }

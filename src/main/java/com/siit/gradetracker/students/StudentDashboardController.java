@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import javafx.application.Platform;
 import javafx.fxml.*;
 
 import com.siit.gradetracker.SiiTApp;
@@ -14,7 +16,10 @@ import com.siit.gradetracker.main.SemesterInfo;
 import com.siit.gradetracker.util.GradeComputation;
 
 import javafx.scene.text.Text;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 
 public class StudentDashboardController implements Initializable {
@@ -26,7 +31,8 @@ public class StudentDashboardController implements Initializable {
     private Map<String, SemesterInfo> coursesBySemester = new HashMap<>();
 
     @FXML
-    private Text studentIdText, studentNameText, programText, schoolNameText, emailAddressText, phoneNumberText,
+    private Text studentAchievementText, studentIdText, studentNameText, programText, schoolNameText, emailAddressText,
+            phoneNumberText,
             birthdateText, termGWAText, cumulativeGWAText;
 
     @FXML
@@ -44,19 +50,17 @@ public class StudentDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+
         if (studentId != null) {
             studentIdText.setText(studentId);
         }
         fetchInformation();
+        updateCumulativeGWA(); // Calculate cumulative GWA for all semesters
+        updateAchievementText();
+        comboBoxSemesterFilter();
+        refreshKey();
 
-        // Listener for when a semester is selected to display corresponding courses and
-        // GWA
-        semesterChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                displayCoursesForSelectedSemester(newValue);
-                displaySemesterGWA(newValue);
-            }
-        });
     }
 
     private void fetchInformation() {
@@ -64,7 +68,6 @@ public class StudentDashboardController implements Initializable {
             fetchStudentInformation(conn); // Fetch student basic information
             fetchStudentSemesters(conn); // Fetch available semesters
             fetchStudentCourses(conn); // Fetch all courses grouped by semester
-            updateCumulativeGWA(); // Calculate cumulative GWA for all semesters
 
             String currentTerm = semesterChoiceBox.getValue();
             if (currentTerm != null) {
@@ -138,17 +141,17 @@ public class StudentDashboardController implements Initializable {
 
     private void fetchStudentCourses(Connection conn) throws SQLException {
         GradeComputation gradeCompute = new GradeComputation();
-        String query = "SELECT sg.prelims_grade, sg.midterm_grade, sg.prefinals_grade, sg.finals_grade, "
+        String query = "SELECT asg.prelims_grade, asg.midterm_grade, asg.prefinals_grade, asg.finals_grade, "
                 + "c.*, CONCAT(sy.school_year_name, ' ', t.term_name) AS semester "
-                + "FROM students.student_grades sg "
-                + "JOIN students.student_course sc ON sg.student_courses_id = sc.id "
+                + "FROM students.all_student_grades asg "
+                + "JOIN students.student_course sc ON asg.student_courses_id = sc.id "
                 + "JOIN students.student_enrollment se ON sc.student_enrollment_id = se.id "
                 + "JOIN students.student_information si ON se.student_id = si.id "
                 + "JOIN sgpt.courses c ON sc.course_id = c.id "
                 + "JOIN sgpt.school_year sy ON se.year_id = sy.id "
                 + "JOIN sgpt.terms t ON se.term_id = t.id "
                 + "WHERE si.student_id = ? "
-                + "ORDER BY sg.id ASC";
+                + "ORDER BY asg.id ASC";
 
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, studentId);
@@ -158,7 +161,6 @@ public class StudentDashboardController implements Initializable {
                 Map<String, List<Course>> tempCoursesBySemester = new HashMap<>();
                 while (rs.next()) {
                     String semester = rs.getString("semester");
-                    String courseCode = rs.getString("course_code");
                     String courseDescription = rs.getString("course_description");
                     int courseUnit = rs.getInt("course_unit");
 
@@ -170,13 +172,14 @@ public class StudentDashboardController implements Initializable {
                     };
 
                     Double courseGrade = gradeCompute.computeCourseGrade(grades);
+                    if (courseGrade <= 2.25) {
+
+                    }
                     boolean isIncludedInGWA = rs.getBoolean("included_in_gwa");
-                    Course course = new Course(courseCode, courseDescription, courseUnit, grades, courseGrade,
-                            isIncludedInGWA);
+                    Course course = new Course(courseDescription, courseUnit, grades, courseGrade, isIncludedInGWA);
                     tempCoursesBySemester.computeIfAbsent(semester, k -> new ArrayList<>()).add(course);
                 }
 
-                // calculateSemesterGWA(tempCoursesBySemester);
                 gradeCompute.calculateSemesterGWA(coursesBySemester, tempCoursesBySemester);
             }
         }
@@ -203,6 +206,7 @@ public class StudentDashboardController implements Initializable {
         }
     }
 
+    @FXML
     private void updateCurrentGWA(String semester) {
         double totalCredits = 0.0;
         int totalUnits = 0;
@@ -229,6 +233,7 @@ public class StudentDashboardController implements Initializable {
         }
     }
 
+    @FXML
     private void updateCumulativeGWA() {
         double totalGWA = 0.0;
 
@@ -246,6 +251,11 @@ public class StudentDashboardController implements Initializable {
     }
 
     @FXML
+    private void updateAchievementText() {
+
+    }
+
+    @FXML
     private StackPane loadCourseCard(Course course) {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -260,6 +270,35 @@ public class StudentDashboardController implements Initializable {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private void comboBoxSemesterFilter() {
+        semesterChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                displayCoursesForSelectedSemester(newValue);
+                displaySemesterGWA(newValue);
+            }
+        });
+    }
+
+    private void refreshDashboard() {
+        coursesBySemester.clear(); // Clear existing data
+        fetchInformation(); // Re-fetch and update information
+        System.out.println("Dashboard refreshed!");
+    }
+
+    private void refreshKey() {
+        Platform.runLater(() -> {
+            Scene scene = SiiTApp.getScene(); // Access the scene via SiiTApp
+            if (scene != null) {
+                scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+                    if ((event.isMetaDown() || event.isControlDown()) && event.getCode() == KeyCode.R) {
+                        refreshDashboard();
+                        event.consume(); // Prevent other handlers from processing this event
+                    }
+                });
+            }
+        });
     }
 
     @FXML

@@ -25,6 +25,10 @@ public class SiiTApp extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
+    public static Scene getScene() {
+        return scene;
+    }
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SiiTApp.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

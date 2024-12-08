@@ -7,7 +7,7 @@
 }
 
 .combo-box .arrow {
-	-fx-background-color: #074072;
+	-fx-background-color: #095794;
 }
 
 .combo-box {
@@ -15,11 +15,11 @@
 	-fx-background-color: #ffffff;
 	-fx-border-radius: 6px;
 	-fx-border-width: 1px;
-	-fx-border-color: #074072;
+	-fx-border-color: #095794;
 }
 
 .table-view .column-header {
-	-fx-background-color: #074072;
+	-fx-background-color: #095794;
 }
 
 .table-view .column-header .label {
@@ -47,19 +47,23 @@
 
 .button:hover {
 	-fx-background-color: white;
-	-fx-fill: #074072;
+	-fx-icon-color: #095794;
 	-fx-cursor: hand;
 }
 
-.button:hover .svg,
-.button:active .svg {
-	-fx-fill: #074072;
+.button:hover .font-icon,
+.button:active .font-icon {
+	-fx-icon-color: #095794;
 }
 
 .button.active,
-.button.active .svg {
+.button.active .font-icon {
 	-fx-background-color: white;
-	-fx-fill: #074072;
+	-fx-icon-color: #095794;
+}
+
+.font-icon {
+	-fx-icon-color: white;
 }
 
 .svg {

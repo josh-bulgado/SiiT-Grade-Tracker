@@ -10,9 +10,8 @@ public class Course {
   private int gradeId;
 
   // Constructor
-  public Course(String courseCode, String courseDescription, int courseUnit, Double[] grades, Double courseGrade,
+  public Course(String courseDescription, int courseUnit, Double[] grades, Double courseGrade,
       boolean isIncludedInGWA) {
-    this.courseCode = courseCode;
     this.courseDescription = courseDescription;
     this.courseUnit = courseUnit;
     this.grades = grades;

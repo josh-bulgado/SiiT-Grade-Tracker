@@ -3,11 +3,6 @@
  */
 
 .mainFxmlClass {
-	-fx-font-family: "Inter", sans-serif;
-}
-
-.root {
-	-fx-font-family: "Inter", sans-serif;
 }
 
 .button:hover {
@@ -16,11 +11,11 @@
 
 .button {
 	-fx-background-color: white;
-	-fx-text-fill: #074072;
+	-fx-text-fill: #095794;
 }
 
 .choice-box .arrow {
-	-fx-background-color: #074072;
+	-fx-background-color: #095794;
 }
 
 .choice-box {
@@ -36,22 +31,25 @@
 
 .choice-box .choice-box-popup .list-vew .list-cell {
 	-fx-background-color: white;
-	-fx-text-fill: #074072;
+	-fx-text-fill: #095794;
 }
 
 .scroll-pane .vbar {
-	-fx-background-color: #074072;
+	-fx-background-color: #095794;
 }
 
 .radius {
 	-fx-background-radius: 6;
 }
 
-/* .studentoverview {
-	-fx-background-image: url("/src/main/resources/com/siit/images/group2.jpg");
-	-fx-background-repeat: no-repeat;
-	-fx-background-size: cover;
-	-fx-background-position: center;
-	-fx-background-radius: 20px;
-	-fx-border-radius: 20px;
-} */
+.scroll-pane {
+	-fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+	-fx-background-color: transparent;
+}
+
+.scroll-pane:hover {
+	-fx-background-color: rgba(0, 0, 0, 0.1);
+}

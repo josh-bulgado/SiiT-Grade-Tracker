@@ -19,7 +19,7 @@ import javafx.scene.layout.HBox;
 public abstract class FacultyBaseListController extends FacultyDashboardController {
   private DisplayError de = new DisplayError();
 
-  protected int programId;
+  protected int programId = FacultyDashboardCentralController.programId;
 
   @FXML
   private TextField studentIdSearchField;
@@ -65,39 +65,10 @@ public abstract class FacultyBaseListController extends FacultyDashboardControll
     }
   }
 
-  protected void fetchPrograms(Connection conn) throws SQLException {
-
-    String query;
-    if (programId == 0) {
-      query = "SELECT p.program_acronym FROM sgpt.program p";
-    } else if (programId >= 1 && programId <= 5) {
-      query = "SELECT p.program_acronym FROM sgpt.program p WHERE p.id = ?";
-    } else {
-      throw new IllegalArgumentException("Invalid programId value. Expected 0 or between 1-5.");
-    }
-
-    try (PreparedStatement stmt = conn.prepareStatement(query)) {
-      if (programId >= 1 && programId <= 5) {
-        stmt.setInt(1, programId); // Set the programId as a parameter for the query
-      }
-
-      try (ResultSet rs = stmt.executeQuery()) {
-        programComboBox.getItems().add("All");
-        while (rs.next()) {
-          String programAcronym = rs.getString("program_acronym");
-          programComboBox.getItems().add(programAcronym);
-        }
-      }
-    }
-  }
-
-  protected void populateStudentsToTable() {
-    studentTable.setItems(studentList); // Use the inherited students list
-  }
-
   protected void fetchStudents(Connection conn) throws SQLException {
     studentList.clear();
     String query;
+    System.out.println(programId);
     if (programId == 0) {
       query = "SELECT si.student_id, si.last_name, si.first_name, p.program_acronym "
           + "FROM students.student_information si "
@@ -130,6 +101,36 @@ public abstract class FacultyBaseListController extends FacultyDashboardControll
     } catch (SQLException e) {
       de.showErrorDialog("Error", "An error occurred while fetching student information. Please try again.");
     }
+  }
+
+  protected void fetchPrograms(Connection conn) throws SQLException {
+
+    String query;
+    if (programId == 0) {
+      query = "SELECT p.program_acronym FROM sgpt.program p";
+    } else if (programId >= 1 && programId <= 5) {
+      query = "SELECT p.program_acronym FROM sgpt.program p WHERE p.id = ?";
+    } else {
+      throw new IllegalArgumentException("Invalid programId value. Expected 0 or between 1-5.");
+    }
+
+    try (PreparedStatement stmt = conn.prepareStatement(query)) {
+      if (programId >= 1 && programId <= 5) {
+        stmt.setInt(1, programId); // Set the programId as a parameter for the query
+      }
+
+      try (ResultSet rs = stmt.executeQuery()) {
+        programComboBox.getItems().add("All");
+        while (rs.next()) {
+          String programAcronym = rs.getString("program_acronym");
+          programComboBox.getItems().add(programAcronym);
+        }
+      }
+    }
+  }
+
+  protected void populateStudentsToTable() {
+    studentTable.setItems(studentList); // Use the inherited students list
   }
 
   protected void filterSearchField() {

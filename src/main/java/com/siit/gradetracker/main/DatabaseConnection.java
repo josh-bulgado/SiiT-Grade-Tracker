@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class DatabaseConnection {
 
-    private static final String URL = "jdbc:mysql://10.0.0.44:3306";
+    private static final String URL = "jdbc:mysql://10.0.0.35:3306";
     private static final String USER = "root";
-    private static final String PASSWORD = "joshua";
+    private static final String PASSWORD = "seeit123456";
 
     static {
         try {

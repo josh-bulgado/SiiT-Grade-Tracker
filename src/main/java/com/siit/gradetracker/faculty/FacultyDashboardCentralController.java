@@ -1,20 +1,19 @@
 package com.siit.gradetracker.faculty;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-import com.siit.gradetracker.SiiTApp;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
-import javafx.fxml.*;
+import com.siit.gradetracker.*;;
 
-public abstract class FacultyDashboardCentralController implements Initializable {
+public abstract class FacultyDashboardCentralController {
+
+    @FXML
+    protected Button dashboardButton, studentButton, archiveButton;
 
     protected static int programId;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    }
 
     protected abstract void fetchInformation();
 
@@ -32,7 +31,7 @@ public abstract class FacultyDashboardCentralController implements Initializable
     }
 
     @FXML
-    protected void toHome() throws IOException {
+    protected void toDashboard() throws IOException {
         SiiTApp.setRoot("faculty_dashboard");
     }
 

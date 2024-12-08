@@ -12,25 +12,20 @@ import com.siit.gradetracker.util.DisplayError;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.*;
-import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-public class FacultyDashboardController extends FacultyDashboardCentralController {
+public class FacultyDashboardController extends FacultyDashboardCentralController implements Initializable {
 
     private DisplayError de = new DisplayError();
     private int studentCount;
     protected static ObservableList<StudentInformation> studentList = FXCollections.observableArrayList();
 
     @FXML
-    private Button homeBtn;
-
-    @FXML
     private Text studentCountText;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        homeBtn.getStyleClass().add("active");
+        dashboardButton.getStyleClass().add("active");
         fetchInformation();
         studentCountText.setText(Integer.toString(studentCount));
     }

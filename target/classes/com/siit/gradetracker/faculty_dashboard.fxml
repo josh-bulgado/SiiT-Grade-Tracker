@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
@@ -13,14 +14,15 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../../../styles/faculty_dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siit.gradetracker.faculty.FacultyDashboardController">
    <top>
       <StackPane prefHeight="50.0" prefWidth="1280.0">
          <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #074072;" StackPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #095794;" StackPane.alignment="CENTER">
                <right>
-                  <Button mnemonicParsing="false" onAction="#backBtn" style="-fx-background-color: white;" text="Log out" textFill="#074072" BorderPane.alignment="CENTER_RIGHT">
+                  <Button mnemonicParsing="false" onAction="#backBtn" style="-fx-background-color: white;" text="Log out" textFill="#095794" BorderPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font name="Helvetica Neue Bold" size="16.0" />
                      </font>
@@ -30,65 +32,37 @@
                   </Button>
                </right>
                <left>
-                  <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Grades and Performance Tracker">
+                        <Group scaleX="0.6" scaleY="0.6" scaleZ="0.5">
+                           <children>
+                              <SVGPath content="M127.695 1.56934L125.513 11.8171H111.894L104.026 48.6428H91.6625L99.5301 11.8171H85.4478L87.6295 1.56934H127.695Z" fill="WHITE" />
+                              <SVGPath content="M51.899 12.08C53.1332 12.08 54.191 11.6834 55.0725 10.89C55.9541 10.0966 56.3948 9.01675 56.3948 7.65038C56.3948 6.19586 55.8659 4.98376 54.8081 4.01409C53.7502 3.04441 52.5602 2.55957 51.2379 2.55957C49.9597 2.55957 48.9018 2.97829 48.0644 3.81574C47.2269 4.60912 46.8082 5.64491 46.8082 6.92312C46.8082 8.33356 47.3371 9.54566 48.395 10.5594C49.4087 11.5732 50.5767 12.08 51.899 12.08ZM57.9816 49.633C59.3038 49.633 60.4058 49.3025 61.2873 48.6413C62.1247 47.9361 62.5435 46.9224 62.5435 45.6001C62.5435 44.8508 62.4553 43.9472 62.279 42.8894C62.1027 41.8315 61.9044 40.7517 61.684 39.6498L58.5766 24.7079C58.1799 22.8567 58.8631 21.6005 60.6261 20.9394L60.9729 20.7908C61.3167 20.6434 61.5235 20.2885 61.4822 19.9168C61.4443 19.5754 61.2042 19.2904 60.8741 19.1951L49.9868 16.0498C49.6981 15.9665 49.387 16.0466 49.1746 16.259C48.977 16.4566 48.8929 16.7408 48.9511 17.014L53.8825 40.1787C54.0588 40.928 54.191 41.5891 54.2792 42.1621C54.3673 42.691 54.4114 43.1979 54.4114 43.6827C54.4114 44.6524 53.9706 45.1373 53.0891 45.1373C52.1318 45.1373 50.9038 44.4514 49.4051 43.0798C49.1343 42.832 48.7152 42.8335 48.4557 43.0931C48.2285 43.3203 48.1931 43.6776 48.3818 43.9377C49.4291 45.382 50.7117 46.6634 52.2296 47.7818C53.8604 49.016 55.7777 49.633 57.9816 49.633Z" fill="#e7bf1d" />
+                              <SVGPath content="M75.9179 12.08C74.6837 12.08 73.6259 11.6834 72.7444 10.89C71.8628 10.0966 71.4221 9.01675 71.4221 7.65038C71.4221 6.19586 71.951 4.98376 73.0088 4.01409C74.0667 3.04441 75.2567 2.55957 76.579 2.55957C77.8572 2.55957 78.915 2.97829 79.7525 3.81574C80.5899 4.60912 81.0087 5.64491 81.0087 6.92312C81.0087 8.33356 80.4798 9.54566 79.4219 10.5594C78.4082 11.5732 77.2402 12.08 75.9179 12.08ZM69.8353 49.633C68.513 49.633 67.4111 49.3025 66.5296 48.6413C65.6922 47.9361 65.2734 46.9224 65.2734 45.6001C65.2734 44.8508 65.3616 43.9472 65.5379 42.8894C65.7142 41.8315 65.9125 40.7517 66.1329 39.6498L69.2403 24.7079C69.637 22.8567 68.9538 21.6005 67.1908 20.9394L66.844 20.7908C66.5002 20.6434 66.2934 20.2885 66.3347 19.9168C66.3726 19.5754 66.6127 19.2904 66.9427 19.1951L77.8301 16.0498C78.1188 15.9665 78.4299 16.0466 78.6423 16.259C78.8399 16.4566 78.924 16.7408 78.8658 17.014L73.9344 40.1787C73.7581 40.928 73.6259 41.5891 73.5377 42.1621C73.4496 42.691 73.4055 43.1979 73.4055 43.6827C73.4055 44.6524 73.8463 45.1373 74.7278 45.1373C75.6851 45.1373 76.9131 44.4514 78.4118 43.0798C78.6826 42.832 79.1016 42.8335 79.3612 43.0931C79.5884 43.3203 79.6237 43.6776 79.4351 43.9377C78.3878 45.382 77.1052 46.6634 75.5873 47.7818C73.9565 49.016 72.0391 49.633 69.8353 49.633Z" fill="#e7bf1d" />
+                              <SVGPath content="M42.9457 15.7157L31.3756 15.7818C31.1112 13.6 30.45 12.0794 29.3922 11.1538C28.3344 10.2282 26.6154 9.83151 24.3014 9.83151C22.1857 9.83151 20.5329 10.2282 19.2767 11.0877C18.0205 11.9472 17.4255 13.0711 17.4255 14.5256C17.4255 14.8562 17.4255 15.1868 17.5577 15.5173C17.6238 15.8479 17.7561 16.1785 17.9544 16.443C18.2189 16.7074 18.4172 16.9058 18.5494 17.1041C18.7478 17.3024 19.0122 17.5008 19.4089 17.6991C19.8056 17.8975 20.0701 18.0297 20.3345 18.1619C20.5329 18.2942 20.8634 18.4264 21.3262 18.5586C21.8552 18.6908 22.1857 18.757 22.318 18.8231C22.4502 18.8892 22.7808 19.0214 23.3097 19.1536C23.8386 19.2859 24.1031 19.352 24.1692 19.352C25.8881 19.7487 27.2104 20.1454 28.2021 20.4759C29.1939 20.7404 30.3178 21.1371 31.6401 21.666C32.9624 22.1288 33.9541 22.5916 34.7475 23.0544C35.5408 23.5172 36.3342 24.1122 37.1937 24.8395C37.9871 25.5006 38.6482 26.294 39.0449 27.0874C39.4416 27.8807 39.8383 28.8725 40.1027 29.9964C40.3672 31.0542 40.4994 32.3104 40.4994 33.6988C40.4994 35.8806 40.1027 37.864 39.3094 39.7152C38.516 41.5664 37.4582 43.0871 36.1359 44.2771C34.8136 45.4672 33.293 46.4589 31.4418 47.3184C29.6567 48.1118 27.8055 48.7068 25.8881 49.1035C23.9047 49.4341 21.9213 49.6324 19.8717 49.6324C16.1693 49.6324 12.8636 49.1035 10.0868 48.1118C7.24387 47.1201 4.92986 45.4011 3.14477 42.9548C1.29357 40.5086 0.434082 37.4673 0.434082 33.831C0.434082 33.5005 0.434082 33.236 0.500196 32.9716H12.5991V33.0377C12.5991 37.9301 15.3759 40.3764 20.9296 40.3764C23.2436 40.3764 25.0948 39.8475 26.5493 38.9219C27.9377 37.9301 28.6649 36.6079 28.6649 35.0211C28.6649 34.2277 28.4666 33.5005 28.136 32.9716C27.8055 32.3765 27.2104 31.8476 26.4171 31.4509C25.5576 30.9881 24.7642 30.6576 24.0369 30.3931C23.2436 30.1286 22.1196 29.7981 20.6651 29.4014C19.1445 28.9386 17.8883 28.5419 16.8966 28.2113C13.2603 26.9551 10.4835 25.4345 8.56616 23.6494C6.58273 21.7982 5.65712 19.2198 5.65712 15.7818C5.65712 11.2199 7.3761 7.58361 10.814 4.80681C14.252 2.03 18.88 0.641602 24.5659 0.641602C30.5162 0.641602 35.078 1.89778 38.2515 4.41012C41.3589 6.92247 42.9457 10.4927 42.9457 15.1868V15.7157Z" fill="WHITE" />
+                           </children>
+                           <HBox.margin>
+                              <Insets right="-30.0" />
+                           </HBox.margin>
+                        </Group>
+                        <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Faculty" textOrigin="BOTTOM">
                            <font>
-                              <Font name="Helvetica Neue Bold" size="24.0" />
+                              <Font name="Helvetica Neue Light Italic" size="11.0" />
                            </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Faculty">
-                           <font>
-                              <Font name="Helvetica Neue" size="13.0" />
-                           </font>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
                </left>
                <padding>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets right="30.0" />
                </padding>
             </BorderPane>
          </children>
       </StackPane>
    </top>
-   <left>
-      <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #074072; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </BorderPane.margin>
-         <children>
-            <Button fx:id="homeBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" style="-fx-background-radius: 10;" VBox.vgrow="ALWAYS">
-               <graphic>
-                  <SVGPath content="M41.6667 16.6667L29.1667 5.70835C28.0208 4.68344 26.5374 4.11682 25 4.11682C23.4627 4.11682 21.9792 4.68344 20.8333 5.70835L8.33335 16.6667C7.67162 17.2585 7.14356 17.9845 6.78433 18.7964C6.42511 19.6082 6.24296 20.4873 6.25001 21.375V39.5833C6.25001 41.2409 6.90849 42.8307 8.0806 44.0028C9.2527 45.1749 10.8424 45.8333 12.5 45.8333H37.5C39.1576 45.8333 40.7473 45.1749 41.9194 44.0028C43.0915 42.8307 43.75 41.2409 43.75 39.5833V21.3542C43.7541 20.4699 43.5705 19.5949 43.2114 18.7868C42.8523 17.9788 42.3258 17.2562 41.6667 16.6667ZM29.1667 41.6667H20.8333V31.25C20.8333 30.6975 21.0528 30.1676 21.4435 29.7769C21.8342 29.3862 22.3641 29.1667 22.9167 29.1667H27.0833C27.6359 29.1667 28.1658 29.3862 28.5565 29.7769C28.9472 30.1676 29.1667 30.6975 29.1667 31.25V41.6667ZM39.5834 39.5833C39.5834 40.1359 39.3639 40.6658 38.9732 41.0565C38.5825 41.4472 38.0526 41.6667 37.5 41.6667H33.3333V31.25C33.3333 29.5924 32.6749 28.0027 31.5028 26.8306C30.3307 25.6585 28.741 25 27.0833 25H22.9167C21.2591 25 19.6694 25.6585 18.4973 26.8306C17.3252 28.0027 16.6667 29.5924 16.6667 31.25V41.6667H12.5C11.9475 41.6667 11.4176 41.4472 11.0269 41.0565C10.6362 40.6658 10.4167 40.1359 10.4167 39.5833V21.3542C10.4171 21.0584 10.4804 20.766 10.6026 20.4966C10.7247 20.2272 10.9028 19.9869 11.125 19.7917L23.625 8.85418C24.0052 8.52018 24.494 8.33598 25 8.33598C25.5061 8.33598 25.9948 8.52018 26.375 8.85418L38.875 19.7917C39.0972 19.9869 39.2753 20.2272 39.3975 20.4966C39.5196 20.766 39.583 21.0584 39.5834 21.3542V39.5833Z" styleClass="svg" />
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="-10.0" />
-               </VBox.margin>
-            </Button>
-            <Separator prefWidth="200.0" />
-            <Button fx:id="studentBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#toStudentList" prefHeight="75.0" prefWidth="75.0" style="-fx-background-radius: 10;">
-               <graphic>
-                  <SVGPath content="M32.7292 26.4792C34.7716 24.8723 36.2625 22.6686 36.9942 20.1749C37.726 17.6812 37.6623 15.0214 36.812 12.5656C35.9618 10.1098 34.3672 7.98004 32.2501 6.47267C30.1331 4.9653 27.5989 4.15527 25 4.15527C22.4011 4.15527 19.8669 4.9653 17.7498 6.47267C15.6328 7.98004 14.0382 10.1098 13.1879 12.5656C12.3377 15.0214 12.274 17.6812 13.0057 20.1749C13.7375 22.6686 15.2283 24.8723 17.2708 26.4792C13.771 27.8814 10.7173 30.207 8.43519 33.2082C6.15311 36.2094 4.72825 39.7736 4.31249 43.5209C4.2824 43.7945 4.30649 44.0713 4.38338 44.3356C4.46027 44.5999 4.58847 44.8464 4.76064 45.0612C5.10837 45.4948 5.61413 45.7726 6.16666 45.8334C6.71919 45.8942 7.27324 45.733 7.70692 45.3852C8.1406 45.0375 8.41838 44.5318 8.47916 43.9792C8.93663 39.9067 10.8785 36.1455 13.9338 33.4142C16.9891 30.6829 20.9435 29.173 25.0417 29.173C29.1398 29.173 33.0943 30.6829 36.1495 33.4142C39.2048 36.1455 41.1467 39.9067 41.6042 43.9792C41.6608 44.4911 41.9051 44.9639 42.2898 45.3063C42.6745 45.6488 43.1725 45.8365 43.6875 45.8334H43.9167C44.4628 45.7706 44.9619 45.4944 45.3053 45.0652C45.6487 44.6359 45.8086 44.0883 45.75 43.5417C45.3323 39.7838 43.8997 36.2104 41.6059 33.2047C39.3121 30.1989 36.2436 27.874 32.7292 26.4792ZM25 25.0001C23.3518 25.0001 21.7407 24.5113 20.3702 23.5956C18.9998 22.68 17.9317 21.3785 17.301 19.8558C16.6703 18.333 16.5052 16.6575 16.8268 15.041C17.1483 13.4245 17.942 11.9396 19.1074 10.7742C20.2729 9.60873 21.7577 8.81506 23.3742 8.49351C24.9907 8.17197 26.6663 8.337 28.189 8.96773C29.7117 9.59846 31.0132 10.6666 31.9289 12.037C32.8446 13.4074 33.3333 15.0185 33.3333 16.6667C33.3333 18.8769 32.4554 20.9965 30.8925 22.5593C29.3297 24.1221 27.2101 25.0001 25 25.0001Z" styleClass="svg" />
-               </graphic>
-               <VBox.margin>
-                  <Insets top="-10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="archiveBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toArchive" onMouseClicked="#toArchive" prefHeight="75.0" prefWidth="75.0" style="-fx-background-radius: 10;">
-               <graphic>
-                  <SVGPath content="M20.8333 29.1667H29.1666C29.7192 29.1667 30.2491 28.9472 30.6398 28.5565C31.0305 28.1658 31.25 27.6359 31.25 27.0833C31.25 26.5308 31.0305 26.0009 30.6398 25.6102C30.2491 25.2195 29.7192 25 29.1666 25H20.8333C20.2808 25 19.7509 25.2195 19.3602 25.6102C18.9695 26.0009 18.75 26.5308 18.75 27.0833C18.75 27.6359 18.9695 28.1658 19.3602 28.5565C19.7509 28.9472 20.2808 29.1667 20.8333 29.1667ZM39.5833 6.25H10.4166C8.75902 6.25 7.16931 6.90848 5.99721 8.08058C4.82511 9.25269 4.16663 10.8424 4.16663 12.5V18.75C4.16663 19.3025 4.38612 19.8324 4.77682 20.2231C5.16752 20.6138 5.69742 20.8333 6.24996 20.8333H8.33329V37.5C8.33329 39.1576 8.99177 40.7473 10.1639 41.9194C11.336 43.0915 12.9257 43.75 14.5833 43.75H35.4166C37.0742 43.75 38.6639 43.0915 39.836 41.9194C41.0081 40.7473 41.6666 39.1576 41.6666 37.5V20.8333H43.75C44.3025 20.8333 44.8324 20.6138 45.2231 20.2231C45.6138 19.8324 45.8333 19.3025 45.8333 18.75V12.5C45.8333 10.8424 45.1748 9.25269 44.0027 8.08058C42.8306 6.90848 41.2409 6.25 39.5833 6.25ZM37.5 37.5C37.5 38.0525 37.2805 38.5824 36.8898 38.9731C36.4991 39.3638 35.9692 39.5833 35.4166 39.5833H14.5833C14.0308 39.5833 13.5009 39.3638 13.1102 38.9731C12.7195 38.5824 12.5 38.0525 12.5 37.5V20.8333H37.5V37.5ZM41.6666 16.6667H8.33329V12.5C8.33329 11.9475 8.55279 11.4176 8.94349 11.0269C9.33419 10.6362 9.86409 10.4167 10.4166 10.4167H39.5833C40.1358 10.4167 40.6657 10.6362 41.0564 11.0269C41.4471 11.4176 41.6666 11.9475 41.6666 12.5V16.6667Z" styleClass="svg" />
-               </graphic>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-   </left>
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
@@ -115,9 +89,14 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 20;" HBox.hgrow="ALWAYS">
                      <children>
-                        <Text fx:id="studentCountText" fill="#074072" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                        <Text fx:id="studentCountText" fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                            <font>
                               <Font name="Helvetica Neue Bold" size="200.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#095794" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Students" StackPane.alignment="TOP_CENTER">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="27.0" />
                            </font>
                         </Text>
                      </children>
@@ -133,4 +112,38 @@
          </BorderPane.margin>
       </BorderPane>
    </center>
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="752.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #095794; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="dashboardButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toDashboard" prefHeight="75.0" prefWidth="75.0" style="-fx-background-radius: 10;">
+               <graphic>
+                  <FontIcon accessibleRole="BUTTON" iconColor="WHITE" iconLiteral="unil-home-alt" iconSize="50" styleClass="font-icon" />
+               </graphic>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button fx:id="studentButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toStudentList" prefHeight="75.0" prefWidth="75.0" style="-fx-background-radius: 10;">
+               <VBox.margin>
+                  <Insets top="-10.0" />
+               </VBox.margin>
+               <graphic>
+                  <FontIcon accessibleRole="BUTTON" iconColor="WHITE" iconLiteral="unil-user" iconSize="50" styleClass="font-icon" />
+               </graphic>
+            </Button>
+            <Button fx:id="archiveButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toArchive" prefHeight="75.0" prefWidth="75.0" style="-fx-background-radius: 10;">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <graphic>
+                  <FontIcon accessibleRole="BUTTON" iconColor="WHITE" iconLiteral="unil-archive" iconSize="50" styleClass="font-icon" />
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
 </BorderPane>
